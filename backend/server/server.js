@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 require("colors");
-const { auth } = require("../routers");
+const { auth, todo } = require("../routers");
 const { PORT_SERVER } = process.env;
 
 class Server {
@@ -11,6 +11,7 @@ class Server {
     this.port = PORT_SERVER;
     this.path = {
       routeAuth: "/api/auth",
+      routeTodo: "/api/todo",
     };
 
     //this.connecDB();
@@ -28,6 +29,7 @@ class Server {
 
   route() {
     this.app.use(this.path.routeAuth, auth);
+    this.app.use(this.path.routeTodo, todo);
   }
 
   listen() {
