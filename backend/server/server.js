@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 require("colors");
+const dbConnection = require("../db/base");
 const { auth, todo } = require("../routers");
 const { PORT_SERVER } = process.env;
 
@@ -14,12 +15,14 @@ class Server {
       routeTodo: "/api/todo",
     };
 
-    //this.connecDB();
+    this.connecDB();
     this.middlewares();
     this.route();
   }
 
-  async connecDB() {}
+  async connecDB() {
+    await dbConnection();
+  }
 
   middlewares() {
     this.app.use(express.json());
