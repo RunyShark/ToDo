@@ -4,14 +4,13 @@ const cors = require("cors");
 require("colors");
 const { auth } = require("../routers");
 const { PORT_SERVER } = process.env;
-console.log(PORT_SERVER);
 
 class Server {
   constructor() {
     this.app = express();
     this.port = PORT_SERVER;
     this.path = {
-      routeAuth: "api/auth",
+      routeAuth: "/api/auth",
     };
 
     //this.connecDB();

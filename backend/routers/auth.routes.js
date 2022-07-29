@@ -7,7 +7,7 @@ const {
 
 const route = Router();
 
-route.post("/create", createAccount);
+route.post("/register", createAccount);
 route.post("/login", loginAccount);
 route.get("/validate", validateToken);
 

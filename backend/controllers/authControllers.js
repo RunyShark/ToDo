@@ -5,7 +5,11 @@ const createAccount = (req = request, res = response) => {
 };
 
 const loginAccount = (req = request, res = response) => {
-  res.json({ msg: "Login cuenta" });
+  try {
+    res.json({ msg: "Login cuenta" });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const validateToken = (req = request, res = response) => {
