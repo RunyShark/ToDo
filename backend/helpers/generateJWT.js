@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 
-const generarJWT = (user) => {
+const generateJWT = (user) => {
   return jwt.sign(
     {
       udi: user.id,
@@ -14,5 +14,5 @@ const generarJWT = (user) => {
 };
 
 module.exports = {
-  generarJWT,
+  generateJWT,
 };

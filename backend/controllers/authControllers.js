@@ -1,8 +1,27 @@
 const { request, response } = require("express");
+const { hassPassword, generateJWT } = require("../helpers");
+const Users = require("../models/User");
 
 const createAccount = async (req = request, res = response) => {
   try {
-    res.json({ msg: "Crear cuenta" });
+    const { password } = req.body;
+
+    const passOp = await hassPassword(password);
+
+    const user = await Users(req.body);
+
+    user.password = passOp;
+    await user.save();
+
+    res.json({
+      Error: false,
+      msg: "Registro completado",
+      user: {
+        uid: user.id,
+        name: user.name,
+        token: generateJWT(user),
+      },
+    });
   } catch (error) {
     console.log(error.message);
     res
