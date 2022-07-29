@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const { hassPassword, generateJWT } = require("../helpers");
+const { hassPassword, generateJWT, checkPassword } = require("../helpers");
 const Users = require("../models/User");
 
 const createAccount = async (req = request, res = response) => {
@@ -32,7 +32,23 @@ const createAccount = async (req = request, res = response) => {
 
 const loginAccount = async (req = request, res = response) => {
   try {
-    res.json({ msg: "Login cuenta" });
+    const { email, password } = req.body;
+
+    const user = await Users.findOne({ email });
+
+    if (await checkPassword(password, user.password)) {
+      res.json({
+        Error: false,
+        msg: "Inicio de secion completado",
+        user: {
+          uid: user.id,
+          name: user.name,
+          token: generateJWT(user),
+        },
+      });
+    } else {
+      res.status(400).json({ Error: true, msg: "Contraseña incorrecta" });
+    }
   } catch (error) {
     console.log(error.message);
     res
@@ -43,7 +59,16 @@ const loginAccount = async (req = request, res = response) => {
 
 const validateToken = async (req = request, res = response) => {
   try {
-    res.json({ msg: "validar secion" });
+    const { uid, name } = req;
+    console.log({ uid, name });
+    const data = {
+      id: uid,
+      name,
+    };
+
+    const token = generateJWT(data);
+
+    res.json({ Error: false, msg: "ok", uid, name, token });
   } catch (error) {
     console.log(error.message);
     res

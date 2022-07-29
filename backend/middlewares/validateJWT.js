@@ -1,7 +1,7 @@
 const { response } = require("express");
 const jwt = require("jsonwebtoken");
 
-const validarJWT = (req, res = response, next) => {
+const validateJWT = (req, res = response, next) => {
   const token = req.header("x-token");
 
   console.log(token);
@@ -14,7 +14,7 @@ const validarJWT = (req, res = response, next) => {
 
   try {
     const { uid, name } = jwt.verify(token, process.env.JWT_SECRET);
-
+    console.log(uid, name);
     req.uid = uid;
     req.name = name;
   } catch (error) {
@@ -28,5 +28,5 @@ const validarJWT = (req, res = response, next) => {
 };
 
 module.exports = {
-  validarJWT,
+  validateJWT,
 };
