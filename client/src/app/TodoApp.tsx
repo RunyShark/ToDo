@@ -1,3 +1,10 @@
+import { AppRoutes } from "../routes/AppRoutes";
+import { AppTheme } from "../index";
+
 export const TodoApp = () => {
-  return <h1>Hola munde</h1>;
+  return (
+    <AppTheme>
+      <AppRoutes />
+    </AppTheme>
+  );
 };
