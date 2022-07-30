@@ -57,9 +57,9 @@ export const DrawerComponent = () => {
                   <ListItemButton>
                     <ListItemIcon>
                       {text === "Crear" ? (
-                        <NoteAdd />
+                        "📝"
                       ) : text === "Perfil" ? (
-                        <AccountCircle />
+                        "👥"
                       ) : (
                         <ExitToApp />
                       )}
