@@ -1,5 +1,6 @@
 const Users = require("../models/User");
 const Todos = require("../models/Todo");
+const moment = require("moment");
 
 const emailExists = async (email = "") => {
   const existe = await Users.findOne({ email });
@@ -21,7 +22,19 @@ const emailNoExists = async (email = "") => {
   }
 };
 
+const isDate = (date) => {
+  if (!date) {
+    throw new Error(`${date} no es una fecha`);
+  }
+  const fecha = moment(date);
+  if (!fecha.isValid()) {
+    throw new Error(`${date} no es una fecha correcta`);
+  }
+  return true;
+};
+
 module.exports = {
   emailExists,
   emailNoExists,
+  isDate,
 };

@@ -9,7 +9,11 @@ const TodoShema = Schema({
     type: String,
     required: true,
   },
-  date: {
+  dateStart: {
+    type: Date,
+    required: true,
+  },
+  dateEnd: {
     type: Date,
     required: true,
   },
