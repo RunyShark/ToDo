@@ -1,9 +1,9 @@
-import { useDispatch } from "react-redux";
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { DrawerComponent } from "./DrawerComponent";
+import Button from "@mui/material/Button";
 
-export const NavBar = ({ drawerWidth }: { drawerWidth: number }) => {
+export const NavBar = ({ drawerWidth }: { drawerWidth?: number }) => {
   return (
     <AppBar
       position="fixed"

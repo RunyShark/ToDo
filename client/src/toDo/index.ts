@@ -1,3 +1,4 @@
-export * from "./pages/TodoPage";
+export * from "./pages";
 export * from "../auth";
 export * from "../toDo";
+export * from "./view";
