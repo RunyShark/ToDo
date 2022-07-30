@@ -13,7 +13,7 @@ const createAccount = async (req = request, res = response) => {
     user.password = passOp;
     await user.save();
 
-    res.json({
+    res.status(201).json({
       Error: false,
       msg: "Registro completado",
       user: {
@@ -37,7 +37,7 @@ const loginAccount = async (req = request, res = response) => {
     const user = await Users.findOne({ email });
 
     if (await checkPassword(password, user.password)) {
-      res.json({
+      res.status(202).json({
         Error: false,
         msg: "Inicio de secion completado",
         user: {
@@ -68,7 +68,7 @@ const validateToken = async (req = request, res = response) => {
 
     const token = generateJWT(data);
 
-    res.json({ Error: false, msg: "ok", uid, name, token });
+    res.status(202).json({ Error: false, msg: "ok", uid, name, token });
   } catch (error) {
     console.log(error.message);
     res
