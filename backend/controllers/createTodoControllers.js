@@ -12,7 +12,11 @@ const getTodos = async (req = request, res = response) => {
         .json({ Error: true, msg: `Algo salio mal: ${error.message}` });
     }
 
-    res.json({ Error: false, msg: "get Todos", results: todos });
+    res.json({
+      Error: false,
+      msg: "get Todos",
+      results: todos,
+    });
   } catch (error) {
     console.log(error.message);
     res
@@ -44,7 +48,16 @@ const createTodo = async (req = request, res = response) => {
 
 const deleteTodo = async (req = request, res = response) => {
   try {
-    res.json({ msg: "deleteTodo" });
+    const { id } = req.params;
+
+    const todo = await Todos.findById(id);
+    await Todos.findByIdAndDelete(id);
+
+    res.status(201).json({
+      Error: false,
+      msg: "Todo elminadao",
+      todo,
+    });
   } catch (error) {
     console.log(error.message);
     res
@@ -55,7 +68,24 @@ const deleteTodo = async (req = request, res = response) => {
 
 const updateTodo = async (req = request, res = response) => {
   try {
-    res.json({ msg: "updateTodo" });
+    const { id } = req.params;
+
+    const uid = req.uid;
+
+    const updateTodo = {
+      ...req.body,
+      user: uid,
+    };
+
+    const todoUdate = await Todos.findByIdAndUpdate(id, updateTodo, {
+      new: true,
+    });
+
+    res.status(202).json({
+      Error: false,
+      msg: "Todo actualizacion",
+      todoUdate,
+    });
   } catch (error) {
     console.log(error.message);
     res

@@ -8,18 +8,18 @@ const {
   updateTodo,
 } = require("../controllers");
 const { validateErros, validateJWT } = require("../middlewares");
-const { isDate } = require("../helpers/validationDB");
+const { isDate, existeTodo } = require("../helpers/validationDB");
 
 const route = Router();
 
 route.get("/getTodos", [validateJWT], getTodos);
 
 route.put(
-  "/updateTodo",
+  "/updateTodo/:id",
   [
     validateJWT,
     check("id", "El id no es valido").isMongoId(),
-    //check("id").custom(),
+    check("id").custom(existeTodo),
 
     check("title", "Debe de ser un texto, no numeros").isString(),
     check(
@@ -32,11 +32,11 @@ route.put(
   updateTodo
 );
 route.delete(
-  "/deleteTodo",
+  "/deleteTodo/:id",
   [
     validateJWT,
     check("id", "El id no es valido").isMongoId(),
-    //check("id").custom(),
+    check("id").custom(existeTodo),
     validateErros,
   ],
   deleteTodo

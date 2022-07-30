@@ -33,8 +33,17 @@ const isDate = (date) => {
   return true;
 };
 
+const existeTodo = async (id) => {
+  const existe = await Todos.findById(id);
+
+  if (!existe) {
+    throw new Error(`No existete ninguna to do con el id:${id}`);
+  }
+};
+
 module.exports = {
   emailExists,
   emailNoExists,
+  existeTodo,
   isDate,
 };
