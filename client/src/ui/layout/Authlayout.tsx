@@ -1,8 +1,8 @@
 import { Person } from "@mui/icons-material";
 import { Grid, Typography } from "@mui/material";
-import { AuthLayout } from "../interfaces/interfacesUi";
+import { AuthLayoutProps } from "../interfaces/interfacesUi";
 
-export const Authlayout = ({ children, title }: AuthLayout) => {
+export const AuthLayout = ({ children, title }: AuthLayoutProps) => {
   return (
     <Grid
       container
@@ -16,7 +16,12 @@ export const Authlayout = ({ children, title }: AuthLayout) => {
         item
         className="box-shadow"
         xs={3}
-        sx={{ backgroundColor: "white", padding: 3, borderRadius: 2 }}
+        sx={{
+          width: { md: 550 },
+          backgroundColor: "white",
+          padding: 3,
+          borderRadius: 2,
+        }}
       >
         <Typography variant="h5" sx={{ mb: 1 }} textAlign="center">
           {title}

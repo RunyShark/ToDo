@@ -1,17 +1,17 @@
 import { Login, Person } from "@mui/icons-material";
 import { Button, Grid, TextField, Typography, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { Authlayout } from "../../index";
+import { AuthLayout } from "../../index";
 export const LoginPage = () => {
   return (
-    <Authlayout title="Login">
+    <AuthLayout title="Iniciar sesión">
       <form action="">
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
               label="Correo"
               type="email"
-              placeholder="Correo electronico"
+              placeholder="Correo electrónico"
               fullWidth
             />
           </Grid>
@@ -27,7 +27,7 @@ export const LoginPage = () => {
             <Grid item xs={12}>
               <Button variant="contained" fullWidth>
                 <Login />
-                Login
+                Entrar
               </Button>
             </Grid>
           </Grid>
@@ -53,6 +53,6 @@ export const LoginPage = () => {
           </Grid>
         </Grid>
       </form>
-    </Authlayout>
+    </AuthLayout>
   );
 };
