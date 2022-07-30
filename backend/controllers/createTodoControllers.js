@@ -1,8 +1,19 @@
 const { request, response } = require("express");
+const Todos = require("../models/Todo");
 
 const createTodo = async (req = request, res = response) => {
   try {
-    res.json({ msg: "Todo" });
+    const todo = await Todos(req.body);
+
+    todo.user = req.uid;
+
+    const newTodo = await todo.save();
+
+    res.json({
+      Error: false,
+      msg: "Todo creado",
+      newTodo,
+    });
   } catch (error) {
     console.log(error.message);
     res
