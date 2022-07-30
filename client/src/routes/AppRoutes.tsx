@@ -1,22 +1,24 @@
+import { Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { LoginPage, TodoPage } from "../index";
+import { AuthRoutes, TodoPage } from "../index";
 
 export const AppRoutes = () => {
   const userState = "autenticate";
 
   return (
-    <Routes>
-      {userState === "autenticate" ? (
-        <>
-          <Route path="/auth/*" element={<LoginPage />} />
-          <Route path="/*" element={<Navigate to="/auth/login" />} />
-        </>
-      ) : (
-        <>
-          <Route path="/" element={<TodoPage />} />
-          <Route path="/*" element={<Navigate to="/" />} />
-        </>
-      )}
-    </Routes>
+    <Suspense fallback={<span>Loading......</span>}>
+      <Routes>
+        {userState === "autenticate" ? (
+          <>
+            <Route path="/auth/*" element={<AuthRoutes />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<TodoPage />} />
+          </>
+        )}
+        <Route path="/*" element={<Navigate to="/auth/login" />} />
+      </Routes>
+    </Suspense>
   );
 };
