@@ -3,7 +3,8 @@ const Todos = require("../models/Todo");
 
 const getTodos = async (req = request, res = response) => {
   try {
-    const todos = await Todos.find();
+    const user = req.uid;
+    const todos = await Todos.find().where("user").equals(user);
 
     if (todos.length === 0) {
       const error = new Error(`No hay data actualmente`);

@@ -1,6 +1,7 @@
+import { Link as RouterLink } from "react-router-dom";
 import { Login, Person } from "@mui/icons-material";
 import { Button, Grid, TextField, Typography, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+
 import { AuthLayout } from "../../index";
 export const LoginPage = () => {
   return (

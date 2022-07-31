@@ -14,6 +14,11 @@ const UserShema = Schema({
     type: String,
     required: true,
   },
+  img: {
+    type: String,
+    default:
+      "https://www.ucal.edu.pe/sites/default/files/user-3995d1ed5f9b6ea6ef9c7bc9ead47415_1.jpg",
+  },
 });
 
 module.exports = model("Users", UserShema);

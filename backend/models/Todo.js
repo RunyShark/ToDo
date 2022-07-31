@@ -17,6 +17,10 @@ const TodoShema = Schema({
     type: Date,
     required: true,
   },
+  state: {
+    type: Boolean,
+    default: false,
+  },
   user: {
     type: Schema.Types.ObjectId,
     required: true,
