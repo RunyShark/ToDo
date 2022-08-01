@@ -18,6 +18,7 @@ export interface User {
 
 export interface ErrosLogin {
   errors: Error[];
+  user?: User;
 }
 
 export interface Error {

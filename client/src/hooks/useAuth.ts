@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import todoAPI from "../api/todoAPI";
 import {
   onChecking,
@@ -25,6 +26,7 @@ export const useAuth = () => {
       const { data }: { data: AuthProps | ErrosLogin } = await todoAPI.post(
         "/auth/register"
       );
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -33,15 +35,22 @@ export const useAuth = () => {
   const startLogin = async ({ email, password }: LoginOrRegister) => {
     dispatch(onChecking());
     try {
-      const { data }: { data: AuthProps | ErrosLogin } = await todoAPI.post(
-        "/auth/login",
-        {
-          email,
-          password,
-        }
-      );
-    } catch (error) {
-      console.log(error);
+      const { data }: { data: AuthProps } = await todoAPI.post("/auth/login", {
+        email,
+        password,
+      });
+      localStorage.setItem("token", data.user.token);
+
+      dispatch(onLogin(data));
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", error.response.data.msg, "error");
+        return;
+      }
+      const response = error.response.data.errors[0].msg;
+      console.log(response);
+      //success'
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
     }
   };
 
