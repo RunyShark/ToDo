@@ -58,9 +58,6 @@ route.post(
       "La descripcion debe de tener un minimo de 3 caracteresy un maximo de 20"
     ).isLength({ min: 3, max: 200 }),
 
-    check("dateStart", "La fecha de inicio es obligatoria").not().isEmpty(),
-    check("dateStart").custom(isDate),
-
     check("dateEnd", "La fecha de finilizacion de envento es obligatorio")
       .not()
       .isEmpty(),

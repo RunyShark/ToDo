@@ -6,14 +6,18 @@ import {
   SaveOutlined,
 } from "@mui/icons-material";
 export const TodoView = () => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
   return (
     <Grid
       container
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ mb: 1 }}
+      sx={{
+        mt: 10,
+        padding: 10,
+        backgroundColor: "#F9FAFB",
+        borderRadius: 5,
+      }}
     >
       <Grid item>
         <Typography fontSize={39} fontWeight="ligth">
@@ -21,25 +25,15 @@ export const TodoView = () => {
         </Typography>
       </Grid>
 
-      <Grid item>
-        <Button color="primary" sx={{ padding: 2 }}>
-          <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
-          Guardar
-        </Button>
-      </Grid>
-
       <Grid container>
-        <Grid item xs={20}>
-          <TextField
-            type="text"
-            variant="standard"
-            fullWidth
-            placeholder="ingresa el titulo"
-            label="Titulo de la tarea"
-            sx={{ border: "none", mb: 1 }}
-          />
-        </Grid>
-
+        <TextField
+          type="text"
+          variant="standard"
+          fullWidth
+          placeholder="ingresa el titulo"
+          label="Titulo de la tarea"
+          sx={{ border: "none", mb: 1 }}
+        />
         <TextField
           type="text"
           variant="standard"
@@ -72,6 +66,12 @@ export const TodoView = () => {
             }}
           />
           <label style={{ margin: "10px" }}>Importante</label>
+        </Grid>
+        <Grid item>
+          <Button color="primary" sx={{ padding: 2 }}>
+            <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
+            Guardar
+          </Button>
         </Grid>
       </Grid>
     </Grid>

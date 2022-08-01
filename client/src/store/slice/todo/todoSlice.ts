@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const todoSlice = createSlice({
   name: "todo",
   initialState: {
+    isSaving: false,
+    messageSaved: "",
     isLoadingTodos: true,
     todos: [],
   },

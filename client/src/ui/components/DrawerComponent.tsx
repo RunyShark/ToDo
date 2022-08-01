@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Fragment, useState, KeyboardEvent, MouseEvent } from "react";
-import { IconButton } from "@mui/material";
+import { IconButton, Grid } from "@mui/material";
 import {
   Box,
   Drawer,
@@ -60,7 +60,7 @@ export const DrawerComponent = () => {
               Menu
             </Typography>
             <Divider />
-            {["Perfil", "Crear", "Cerrar sesión"].map((text) => (
+            {["Perfil", "Cerrar sesión"].map((text) => (
               <ListItem key={text} disablePadding sx={{ mb: 2 }}>
                 <ListItemButton onClick={() => changePage(text)}>
                   <ListItemIcon>

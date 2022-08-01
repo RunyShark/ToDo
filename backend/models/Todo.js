@@ -11,13 +11,21 @@ const TodoShema = Schema({
   },
   dateStart: {
     type: Date,
-    required: true,
+    default: new Date().getTime(),
   },
   dateEnd: {
     type: Date,
     required: true,
   },
-  state: {
+  active: {
+    type: Boolean,
+    default: true,
+  },
+  important: {
+    type: Boolean,
+    default: false,
+  },
+  deleted: {
     type: Boolean,
     default: false,
   },

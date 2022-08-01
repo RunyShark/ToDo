@@ -1,5 +1,10 @@
 import { Typography } from "@mui/material";
+import { TodoView, UserLayout } from "../../index";
 
 export const AddNewTodoPage = () => {
-  return <Typography variant="h1">AddTodod</Typography>;
+  return (
+    <UserLayout>
+      <TodoView />
+    </UserLayout>
+  );
 };

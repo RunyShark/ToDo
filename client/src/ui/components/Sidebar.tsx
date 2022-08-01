@@ -14,6 +14,10 @@ import { TurnedInNot } from "@mui/icons-material";
 import { Grid } from "@mui/material";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
+  const onTaks = (note: any) => {
+    console.log(note);
+  };
+
   return (
     <Box
       component="nav"
@@ -34,14 +38,31 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
         </Toolbar>
         <Divider />
         <List>
-          {["enero", "Ferebro", "marzo", "abril"].map((notes) => (
-            <ListItem key={notes} disablePadding sx={{ mb: 3 }}>
-              <ListItemButton>
+          {[
+            "Todas mis tareas",
+            "Tareas importantes",
+            "Tareas pendientes",
+            "Tareas finalizadas",
+            "Tareas vencidas",
+            "Tareas eliminadas",
+          ].map((note) => (
+            <ListItem key={note} disablePadding sx={{ mb: 5 }}>
+              <ListItemButton onClick={() => onTaks(note)}>
                 <ListItemIcon>
-                  <TurnedInNot />
+                  {note === "Todas mis tareas"
+                    ? "🧾"
+                    : note === "Tareas importantes"
+                    ? "🌟"
+                    : note === "Tareas pendientes"
+                    ? "📚"
+                    : note === "Tareas finalizadas"
+                    ? "✔"
+                    : note === "Tareas vencidas"
+                    ? "📅"
+                    : "❌"}
                 </ListItemIcon>
                 <Grid container>
-                  <ListItemText primary={notes} />
+                  <ListItemText primary={note} />
                 </Grid>
               </ListItemButton>
             </ListItem>

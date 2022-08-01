@@ -1,8 +1,9 @@
 import { Box, Toolbar } from "@mui/material";
 import { SideBar, NavBar } from "../components";
+import { AuthLayoutProps } from "../interfaces/interfacesUi";
 const drawerWidth = 250;
 
-export const TodoLayout = ({ children }: { children: JSX.Element }) => {
+export const TodoLayout = ({ children }: any) => {
   return (
     <Box sx={{ display: "flex" }}>
       <NavBar drawerWidth={drawerWidth} />

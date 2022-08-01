@@ -71,27 +71,38 @@ export const Perfil = () => {
             borderRadius: 2,
           }}
         >
-          <IconButton sx={{ ml: 63 }}>
-            <AddPhotoAlternateOutlined />
-          </IconButton>
+          <Grid container justifyContent="end">
+            <IconButton>
+              <AddPhotoAlternateOutlined />
+            </IconButton>
+          </Grid>
+
           <form action="">
             <Grid container>
               <Grid item xs={12} sx={{ mt: 2 }}>
                 <TextField
                   label="Editar nombre"
                   type="email"
-                  placeholder="Correo electronico"
+                  placeholder="Nombre"
                   fullWidth
                 />
               </Grid>
               <Grid item xs={12} sx={{ mt: 2 }}>
                 <TextField
-                  label="Repite tu correo electrónico"
+                  label="Editar correo"
                   type="email"
                   placeholder="Correo electronico"
                   fullWidth
                 />
               </Grid>
+              {/* <Grid item xs={12} sx={{ mt: 2 }}>
+                <TextField
+                  label="Editar contraseña"
+                  type="email"
+                  placeholder="Correo electronico"
+                  fullWidth
+                />
+              </Grid> */}
               <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
                 <Grid item xs={12}>
                   <Button variant="contained" fullWidth>
@@ -101,10 +112,12 @@ export const Perfil = () => {
               </Grid>
             </Grid>
           </form>
-
-          <IconButton color="inherit" edge="start" onClick={handleClick}>
-            <AssignmentReturnOutlined />
-          </IconButton>
+          <Grid container justifyContent="start">
+            <Button color="primary" onClick={handleClick}>
+              <AssignmentReturnOutlined />
+              Volver
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
