@@ -16,7 +16,7 @@ import { useAuth } from "../../index";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
   const { user } = useAuth();
-  console.log(user);
+
   const onTaks = (note: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     //  switch (key) {
     //   case value:
