@@ -20,8 +20,8 @@ export const AppRoutes = () => {
           </>
         ) : (
           <>
-            <Route path="/" element={<TodoRoutes />} />
-            <Route path="/*" element={<Navigate to="/" />} />
+            <Route path="/taks/*" element={<TodoRoutes />} />
+            <Route path="/*" element={<Navigate to="/taks/wenas" />} />
           </>
         )}
       </Routes>

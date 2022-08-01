@@ -42,7 +42,7 @@ export const DrawerComponent = () => {
       return;
     }
 
-    navigate(`/${text}`);
+    navigate(`/taks/${text}`);
   };
 
   const closeSecion = () => {
