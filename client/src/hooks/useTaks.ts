@@ -9,7 +9,7 @@ import {
 } from "./interfaces/interfaceTaks";
 import { onAddNewTodo, onDeleteTodo, onUpdateTodo, onGetTodos } from "../index";
 export const useTaks = () => {
-  const { todos, isSaving, messageSaved, isLoadingTodos } = useSelector<
+  const { todos, isSaving, messageSaved, isLoadingTodos, view } = useSelector<
     unknown,
     any
   >((state: any) => state.todo);
@@ -17,9 +17,11 @@ export const useTaks = () => {
 
   const startGetTask = async () => {
     const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
-      "/todo"
+      "/todo/getTodos"
     );
+    dispatch(onGetTodos(data));
   };
+
   const startSaveTaks = async (todo: PostTodoProps) => {
     const { data }: { data: CreateNewTodoRes } =
       await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
@@ -34,6 +36,7 @@ export const useTaks = () => {
   };
 
   return {
+    view,
     todos,
     isSaving,
     messageSaved,

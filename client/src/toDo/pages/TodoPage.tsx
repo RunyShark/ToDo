@@ -1,14 +1,18 @@
 import {
   TodoLayout,
-  NothingSelectedView,
   TaksModal,
   AllTaks,
+  useTaks,
+  NothingSelectedView,
 } from "../../index";
 
 export const TodoPage = () => {
+  const { view } = useTaks();
+
   return (
     <TodoLayout>
-      <NothingSelectedView />
+      {view === "no-view" ? <NothingSelectedView /> : <AllTaks />}
+
       {/* <AllTaks /> */}
       {/* <CompletdTasks /> */}
 

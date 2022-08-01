@@ -1,14 +1,5 @@
-import {
-  Grid,
-  Typography,
-  CardActionArea,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-} from "@mui/material";
-import { DeleteOutlined, Favorite, FavoriteBorder } from "@mui/icons-material";
-import { Checkbox } from "@mui/material";
+import { Grid } from "@mui/material";
+import { CardTaks } from "../../index";
 
 export const AllTaks = () => {
   return (
@@ -25,31 +16,7 @@ export const AllTaks = () => {
         borderRadius: 5,
       }}
     >
-      <Card sx={{ maxWidth: "calc(100vh - 110px)", borderRadius: 5, mt: 4 }}>
-        <Grid container justifyContent="end">
-          <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-        </Grid>
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Titulo de tarea
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button color="primary">Terminar</Button>
-          <Grid container justifyContent="end">
-            <Button color="error">
-              <DeleteOutlined />
-              Eliminar
-            </Button>
-          </Grid>
-        </CardActions>
-      </Card>
+      <CardTaks />
     </Grid>
   );
 };

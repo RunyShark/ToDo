@@ -21,7 +21,7 @@ export const AppRoutes = () => {
         ) : (
           <>
             <Route path="/taks/*" element={<TodoRoutes />} />
-            <Route path="/*" element={<Navigate to="/taks/wenas" />} />
+            <Route path="/*" element={<Navigate to="/taks/home" />} />
           </>
         )}
       </Routes>

@@ -12,18 +12,37 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
-import { useAuth } from "../../index";
+import { useAuth, useTaks } from "../../index";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
+  const { startGetTask } = useTaks();
   const { user } = useAuth();
 
-  const onTaks = (note: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    //  switch (key) {
-    //   case value:
-    //     break;
-    //   default:
-    //     break;
-    //  }
+  const onTaks = (action: string) => {
+    console.log(action);
+    switch (action) {
+      case "Todas mis tareas":
+        startGetTask();
+        break;
+      case "Tareas importantes":
+        console.log("Hola2");
+        break;
+      case "Tareas pendientes":
+        console.log("Hola3");
+        break;
+      case "Tareas finalizadas":
+        console.log("Hola4");
+        break;
+      case "Tareas vencidas":
+        console.log("Hola5");
+        break;
+      case "Tareas eliminadas":
+        console.log("Hola6");
+        break;
+      default:
+        console.log("nada por aqui");
+        break;
+    }
   };
 
   return (
@@ -55,7 +74,7 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
             "Tareas eliminadas",
           ].map((note) => (
             <ListItem key={note} disablePadding sx={{ mb: 5 }}>
-              <ListItemButton onClick={(note) => onTaks(note)}>
+              <ListItemButton onClick={() => onTaks(note)}>
                 <ListItemIcon>
                   {note === "Todas mis tareas"
                     ? "🧾"
