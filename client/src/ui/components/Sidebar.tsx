@@ -41,7 +41,7 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Dario Moreno 📑
+            {user.name || "No name"} 📑
           </Typography>
         </Toolbar>
         <Divider />
