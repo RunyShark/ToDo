@@ -8,12 +8,7 @@ import {
   onLogout,
   clearErros,
 } from "../index";
-import {
-  AuthProps,
-  ErrosLogin,
-  LoginOrRegister,
-  CheckToken,
-} from "./interfaces/interfacesAuth";
+import { AuthProps, LoginOrRegister } from "./interfaces/interfacesAuth";
 
 export const useAuth = () => {
   const { status, user, errorMessage } = useSelector<unknown, any>(
@@ -24,7 +19,7 @@ export const useAuth = () => {
   const startRegister = async ({ name, email, password }: LoginOrRegister) => {
     dispatch(onChecking());
     try {
-      const { data }: { data: AuthProps | ErrosLogin } = await todoAPI.post(
+      const { data }: { data: AuthProps } = await todoAPI.post<AuthProps>(
         "/auth/register",
         { name, email, password }
       );
@@ -40,10 +35,13 @@ export const useAuth = () => {
   const startLogin = async ({ email, password }: LoginOrRegister) => {
     dispatch(onChecking());
     try {
-      const { data }: { data: AuthProps } = await todoAPI.post("/auth/login", {
-        email,
-        password,
-      });
+      const { data }: { data: AuthProps } = await todoAPI.post<AuthProps>(
+        "/auth/login",
+        {
+          email,
+          password,
+        }
+      );
       localStorage.setItem("token", data.user.token);
       dispatch(onLogin(data));
     } catch (error: any) {
@@ -60,7 +58,9 @@ export const useAuth = () => {
     const token = localStorage.getItem("token");
     if (!token) return dispatch(onLogout());
     try {
-      const { data }: { data: AuthProps } = await todoAPI.get("/auth/validate");
+      const { data }: { data: AuthProps } = await todoAPI.get<AuthProps>(
+        "/auth/validate"
+      );
 
       localStorage.setItem("token", data.user?.token!);
 

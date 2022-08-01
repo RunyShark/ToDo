@@ -9,6 +9,7 @@ export const todoSlice = createSlice({
     todos: [],
   },
   reducers: {
+    onGetTodos: (state, { payload }) => {},
     onAddNewTodo: (state, { payload }) => {},
     onDeleteTodo: (state, { payload }) => {},
     onUpdateTodo: (state, { payload }) => {},
@@ -20,4 +21,5 @@ export const todoSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { onAddNewTodo, onDeleteTodo, onUpdateTodo } = todoSlice.actions;
+export const { onAddNewTodo, onDeleteTodo, onUpdateTodo, onGetTodos } =
+  todoSlice.actions;
