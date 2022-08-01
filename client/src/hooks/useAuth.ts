@@ -31,9 +31,9 @@ export const useAuth = () => {
       localStorage.setItem("token", data.user?.token!);
       dispatch(onRegister(data));
     } catch (error: any) {
+      dispatch(onLogout());
       console.log(error);
       Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
-      dispatch(onLogout());
     }
   };
 
@@ -47,15 +47,12 @@ export const useAuth = () => {
       localStorage.setItem("token", data.user.token);
       dispatch(onLogin(data));
     } catch (error: any) {
+      dispatch(onLogout());
       if (error.response.data.msg) {
         Swal.fire("Verifique", error.response.data.msg, "error");
         return;
       }
-      const response = error.response.data.errors[0].msg;
-      console.log(response);
-      //success'
       Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
-      dispatch(onLogout());
     }
   };
 
@@ -63,19 +60,15 @@ export const useAuth = () => {
     const token = localStorage.getItem("token");
     if (!token) return dispatch(onLogout());
     try {
-      const { data }: { data: CheckToken } = await todoAPI.get(
-        "/auth/validate"
-      );
+      const { data }: { data: AuthProps } = await todoAPI.get("/auth/validate");
 
-      const { token, uid, name } = data;
+      localStorage.setItem("token", data.user?.token!);
 
-      localStorage.setItem("token", token);
-
-      dispatch(onLogin({ name, uid }));
+      dispatch(onLogin(data));
     } catch (error) {
+      dispatch(onLogout());
       console.log(error);
       localStorage.clear();
-      dispatch(onLogout());
     }
   };
 

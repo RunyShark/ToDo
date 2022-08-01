@@ -66,9 +66,15 @@ const validateToken = async (req = request, res = response) => {
       name,
     };
 
-    const token = generateJWT(data);
-
-    res.status(202).json({ Error: false, msg: "ok", uid, name, token });
+    res.status(200).json({
+      Error: false,
+      msg: "Inicio de secion completado",
+      user: {
+        uid,
+        name,
+        token: generateJWT(data),
+      },
+    });
   } catch (error) {
     console.log(error.message);
     res
