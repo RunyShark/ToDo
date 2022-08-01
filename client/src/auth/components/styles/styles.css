@@ -1,0 +1,8 @@
+strong,
+.error-message {
+  color: #ff1744;
+}
+
+.has-error {
+  border: 1px solid #ff1744;
+}

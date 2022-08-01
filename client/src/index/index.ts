@@ -6,3 +6,4 @@ export * from "../theme/AppTheme";
 export * from "../ui/layout";
 export * from "../toDo/routes/TodoRoutes";
 export * from "../hooks";
+export * from "../auth/components";

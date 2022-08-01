@@ -8,7 +8,7 @@ export const AppRoutes = () => {
   return (
     <Suspense fallback={<span>Loading......</span>}>
       <Routes>
-        {userState !== "autenticate" ? (
+        {userState === "autenticate" ? (
           <>
             <Route path="/auth/*" element={<AuthRoutes />} />
           </>
