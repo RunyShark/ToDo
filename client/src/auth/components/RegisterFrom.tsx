@@ -2,12 +2,13 @@ import { Form, Formik } from "formik";
 import { Link as RouterLink } from "react-router-dom";
 import * as yup from "yup";
 import "./styles/styles.css";
-
+import { useAuth } from "../../index";
 import { MyTextinput } from ".";
 import { Grid, Button, Link } from "@mui/material";
 import { Login } from "@mui/icons-material";
 
 export const RegisterFrom = () => {
+  const { startRegister } = useAuth();
   return (
     <div>
       <Formik
@@ -17,7 +18,7 @@ export const RegisterFrom = () => {
           password: "",
         }}
         onSubmit={(values) => {
-          console.log(values);
+          startRegister(values);
         }}
         validationSchema={yup.object({
           name: yup
@@ -75,18 +76,6 @@ export const RegisterFrom = () => {
                 <Link component={RouterLink} color="inherit" to="/auth/login">
                   <span> inicia sesión </span>
                 </Link>
-              </Grid>
-              <Grid container direction="row" justifyContent="end">
-                <Grid item sx={{ mt: 2 }}>
-                  ¿No tienes cuenta?{" "}
-                  <Link
-                    component={RouterLink}
-                    color="inherit"
-                    to="/auth/register"
-                  >
-                    <span style={{ color: "blue" }}>crear una</span>
-                  </Link>
-                </Grid>
               </Grid>
             </Grid>
           </Form>

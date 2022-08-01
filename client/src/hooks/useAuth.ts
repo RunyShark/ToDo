@@ -22,13 +22,17 @@ export const useAuth = () => {
   const dispatch = useDispatch();
 
   const startRegister = async ({ name, email, password }: LoginOrRegister) => {
+    dispatch(onChecking());
     try {
       const { data }: { data: AuthProps | ErrosLogin } = await todoAPI.post(
-        "/auth/register"
+        "/auth/register",
+        { name, email, password }
       );
-      console.log(data);
-    } catch (error) {
+      localStorage.setItem("token", data.user?.token!);
+      dispatch(onRegister(data));
+    } catch (error: any) {
       console.log(error);
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
     }
   };
 
@@ -40,7 +44,6 @@ export const useAuth = () => {
         password,
       });
       localStorage.setItem("token", data.user.token);
-
       dispatch(onLogin(data));
     } catch (error: any) {
       if (error.response.data.msg) {
@@ -74,7 +77,12 @@ export const useAuth = () => {
     }
   };
 
-  const Logout = () => {
+  const recoverPassword = ({ email }: { email: string }) => {
+    //*Recuperar cuenta
+    console.log(email);
+  };
+
+  const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("token-init-date");
     dispatch(clearErros());
@@ -88,7 +96,8 @@ export const useAuth = () => {
     //*f
     startRegister,
     startLogin,
-    Logout,
+    logout,
     checkAuthToken,
+    recoverPassword,
   };
 };

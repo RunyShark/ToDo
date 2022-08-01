@@ -14,8 +14,10 @@ import {
   Link,
 } from "@mui/material";
 import { ExitToApp, MenuOutlined } from "@mui/icons-material";
+import { useAuth } from "../../index";
 
 export const DrawerComponent = () => {
+  const { logout } = useAuth();
   const valor = Object.values(useParams())[0];
 
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ export const DrawerComponent = () => {
   };
 
   const closeSecion = () => {
-    //cerrar secion
+    logout();
   };
 
   return (

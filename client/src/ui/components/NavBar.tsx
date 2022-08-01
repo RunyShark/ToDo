@@ -1,9 +1,13 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { DrawerComponent } from "./DrawerComponent";
-import Button from "@mui/material/Button";
+import { useAuth } from "../../index";
 
 export const NavBar = ({ drawerWidth }: { drawerWidth?: number }) => {
+  const { logout } = useAuth();
+  const closeSecion = () => {
+    logout();
+  };
   return (
     <AppBar
       position="fixed"
@@ -23,7 +27,7 @@ export const NavBar = ({ drawerWidth }: { drawerWidth?: number }) => {
           <Typography variant="h6" noWrap component="div">
             Menu
           </Typography>
-          <IconButton color="error">
+          <IconButton color="error" onClick={closeSecion}>
             <LogoutOutlined />
           </IconButton>
         </Grid>
