@@ -5,17 +5,34 @@ export const authSlice = createSlice({
   initialState: {
     status: "not-authenticated",
     user: {},
-    errorMessage: null,
+    errorMessage: undefined,
   },
   reducers: {
-    onChecking: (state) => {},
-    onRegister: (state, { payload }) => {},
-    onLogin: (state, { payload }) => {},
-    onLogout: (state, { payload }) => {},
-    clearErros: (state, { payload }) => {},
+    onChecking: (state) => {
+      state.status = "checking";
+      state.user = {};
+      state.errorMessage = undefined;
+    },
+    onRegister: (state, { payload }) => {
+      state.status = "checking";
+      state.user = payload;
+      state.errorMessage = undefined;
+    },
+    onLogin: (state, { payload }) => {
+      state.status = "authenticate";
+      state.user = payload;
+      state.errorMessage = undefined;
+    },
+    onLogout: (state, { payload }) => {
+      state.status = "not-authenticated";
+      state.user = {};
+      state.errorMessage = payload || undefined;
+    },
+    clearErros: (state) => {
+      state.errorMessage = undefined;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { onChecking, onRegister, onLogin, onLogout, clearErros } =
   authSlice.actions;
