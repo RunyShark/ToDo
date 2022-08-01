@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import {
   Box,
@@ -9,13 +10,17 @@ import {
   ListItemText,
   Toolbar,
   Typography,
+  Grid,
 } from "@mui/material";
-import { TurnedInNot } from "@mui/icons-material";
-import { Grid } from "@mui/material";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
-  const onTaks = (note: any) => {
-    console.log(note);
+  const onTaks = (note: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    //  switch (key) {
+    //   case value:
+    //     break;
+    //   default:
+    //     break;
+    //  }
   };
 
   return (
@@ -47,7 +52,7 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
             "Tareas eliminadas",
           ].map((note) => (
             <ListItem key={note} disablePadding sx={{ mb: 5 }}>
-              <ListItemButton onClick={() => onTaks(note)}>
+              <ListItemButton onClick={(note) => onTaks(note)}>
                 <ListItemIcon>
                   {note === "Todas mis tareas"
                     ? "🧾"

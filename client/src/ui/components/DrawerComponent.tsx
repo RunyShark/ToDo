@@ -43,6 +43,10 @@ export const DrawerComponent = () => {
     navigate(`/${text}`);
   };
 
+  const closeSecion = () => {
+    //cerrar secion
+  };
+
   return (
     <Fragment>
       <IconButton color="inherit" edge="start" onClick={toggleDrawer(true)}>
@@ -60,22 +64,22 @@ export const DrawerComponent = () => {
               Menu
             </Typography>
             <Divider />
-            {["Perfil", "Cerrar sesión"].map((text) => (
-              <ListItem key={text} disablePadding sx={{ mb: 2 }}>
-                <ListItemButton onClick={() => changePage(text)}>
-                  <ListItemIcon>
-                    {text === "Crear" ? (
-                      "📝"
-                    ) : text === "Perfil" ? (
-                      "👥"
-                    ) : (
-                      <ExitToApp />
-                    )}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+
+            <ListItem disablePadding sx={{ mb: 2 }}>
+              <ListItemButton onClick={() => changePage("Perfil")}>
+                <ListItemIcon>👥</ListItemIcon>
+                <ListItemText primary={"Perfil"} />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding sx={{ mb: 2 }}>
+              <ListItemButton onClick={closeSecion}>
+                <ListItemIcon>
+                  <ExitToApp />
+                </ListItemIcon>
+                <ListItemText primary={"Cerrar sesión"} />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Box>
       </Drawer>
