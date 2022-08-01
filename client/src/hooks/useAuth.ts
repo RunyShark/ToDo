@@ -33,6 +33,7 @@ export const useAuth = () => {
     } catch (error: any) {
       console.log(error);
       Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+      dispatch(onLogout());
     }
   };
 
@@ -54,6 +55,7 @@ export const useAuth = () => {
       console.log(response);
       //success'
       Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+      dispatch(onLogout());
     }
   };
 
