@@ -1,7 +1,7 @@
-import { useTaks, CardTaks } from "../../../index";
+import { useTaks } from "../../../index";
 import { ResultRes } from "../../../hooks/interfaces/interfaceTaks";
 import { Typography } from "@mui/material";
-
+import { CardTaks } from "../viewComponents/cards/CardTaks";
 export const TaksDeleteView = () => {
   const { todoCopia } = useTaks();
 

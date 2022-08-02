@@ -1,7 +1,6 @@
 export * from "./formik/MyChechBox";
 export * from "./formik/MyDate";
 export * from "./formik/MyTextInput";
-export * from "./modals/ModalUpdate";
 export * from "./modals/TaksModal";
 export * from "./Perfil";
 export * from "./viewComponents/cards/CardTaks";
@@ -12,3 +11,7 @@ export * from "./viewComponents/TaksImportants";
 export * from "./viewComponents/TaksPendin";
 export * from "./viewComponents/TaksViewAllTaks";
 export * from "./viewComponents/UpdateNote";
+export * from "./viewComponents/cards/CardTaks";
+export * from "../../hooks";
+export * from "../../ui/layout";
+export * from "../view";

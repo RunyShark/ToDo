@@ -14,20 +14,19 @@ import { Favorite } from "@mui/icons-material";
 export const UpdateNote = () => {
   const { update } = useTaks();
 
-  const { handleChange, values, handleSubmit, errors, touched, handleBlur } =
-    useFormik({
-      initialValues: {
-        _id: update._id,
-        title: update.title,
-        text: update.text,
-        active: update.active,
-        deleted: update.deleted,
-        important: update.important,
-      },
-      onSubmit: (values) => {
-        console.log(values);
-      },
-    });
+  const { handleChange, values, handleSubmit } = useFormik({
+    initialValues: {
+      _id: update._id,
+      title: update.title,
+      text: update.text,
+      active: update.active,
+      deleted: update.deleted,
+      important: update.important,
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   return (
     <Grid

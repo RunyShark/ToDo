@@ -1,25 +1,9 @@
-import { useParams } from "react-router-dom";
-import {
-  Card,
-  Grid,
-  Checkbox,
-  CardActionArea,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-} from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
-import {
-  FavoriteBorder,
-  Favorite,
-  DeleteOutlined,
-  CheckCircle,
-} from "@mui/icons-material";
-import { ModalUpdate } from "../../index";
+import { FavoriteBorder, Favorite, CheckCircle } from "@mui/icons-material";
+
 import { ResultRes } from "../../../../hooks/interfaces/interfaceTaks";
 import ListItemButton from "@mui/material/ListItemButton";
-import { useUIModal } from "../../../../hooks/useUIModal";
 import { useTaks } from "../../../../hooks/useTaks";
 
 export const CardTaks = ({
@@ -34,7 +18,7 @@ export const CardTaks = ({
   user,
 }: ResultRes) => {
   const { startUpdate } = useTaks();
-  const { modalUpdateOpen } = useUIModal();
+
   const note = {
     _id,
     active,
@@ -144,8 +128,6 @@ export const CardTaks = ({
               </Typography>
             </Grid>
           </Grid>
-
-          <ModalUpdate />
         </Grid>
       </Grid>
     </>

@@ -11,7 +11,7 @@ import {
   TaksFinished,
   TaksImportants,
   UpdateNote,
-} from "../../index";
+} from "../components";
 
 export const TodoPage = () => {
   const { view } = useTaks();
