@@ -20,9 +20,9 @@ export const TodoPage = () => {
       {view === "no-view" ? (
         <NothingSelectedView />
       ) : view === "all" ? (
-        <ViewDad title="Todas mis tareas📖" children={<TaksViewAllTaks />} />
+        <ViewDad title="Todas mis tareas📖" children={<TaksViewAllTaks />} /> //*terminada
       ) : view === "importan" ? (
-        <ViewDad title="Tareas importantes🌟" children={<TaksImportants />} />
+        <ViewDad title="Tareas importantes🌟" children={<TaksImportants />} /> //*terminada
       ) : view === "pending" ? (
         <ViewDad title="Tareas pendientes📚" children={<TaksPendin />} /> //*terminada
       ) : view === "fishs" ? (

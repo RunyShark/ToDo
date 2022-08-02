@@ -20,9 +20,12 @@ export const ViewDad = ({ children, title }: Props) => {
         borderRadius: 5,
       }}
     >
-      <Typography color="white" variant="h5" sx={{ mt: 4 }}>
-        {title}
-      </Typography>
+      <Grid container justifyContent="center" sx={{ mt: 4, mb: 4 }}>
+        <Typography color="white" variant="h5">
+          {title}
+        </Typography>
+      </Grid>
+
       {children}
     </Grid>
   );

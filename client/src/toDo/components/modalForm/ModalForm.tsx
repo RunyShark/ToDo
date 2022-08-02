@@ -19,10 +19,10 @@ export const ModalForm = () => {
           text: "",
           important: false,
         }}
-        onSubmit={(value) => {
-          startSaveTaks(value);
-          startGetTask();
+        onSubmit={async (value) => {
+          await startSaveTaks(value);
           modalClose();
+          startGetTask();
         }}
         validationSchema={yup.object({
           dateEnd: yup

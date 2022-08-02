@@ -13,7 +13,6 @@ import {
   Grid,
 } from "@mui/material";
 import { useAuth, useTaks } from "../../index";
-import { FinishedTaks } from "../../toDo/view/FinishedTaks";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
   const {
@@ -45,7 +44,6 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
         expiredTaks();
         break;
       case "Papelera":
-        console.log("Papelera");
         deleteTaks();
         break;
       default:
