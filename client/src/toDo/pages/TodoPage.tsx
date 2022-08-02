@@ -1,14 +1,15 @@
+import { TaksViewAllTaks } from "../components/viewComponents/TaksViewAllTaks";
 import {
   TodoLayout,
   TaksModal,
-  AllTaks,
   useTaks,
   NothingSelectedView,
-  DeleteTaks,
-  ExpiredTaks,
-  FinishedTaks,
-  ImportantsTaks,
-  PendinTaks,
+  TaksPendin,
+  ViewDad,
+  TaksDeleteView,
+  TaksExpired,
+  TaksFinished,
+  TaksImportants,
 } from "../../index";
 
 export const TodoPage = () => {
@@ -19,17 +20,17 @@ export const TodoPage = () => {
       {view === "no-view" ? (
         <NothingSelectedView />
       ) : view === "all" ? (
-        <AllTaks />
+        <ViewDad title="Todas mis tareas📖" children={<TaksViewAllTaks />} />
       ) : view === "importan" ? (
-        <ImportantsTaks />
+        <ViewDad title="Tareas importantes🌟" children={<TaksImportants />} />
       ) : view === "pending" ? (
-        <PendinTaks />
+        <ViewDad title="Tareas pendientes📚" children={<TaksPendin />} /> //*terminada
       ) : view === "fishs" ? (
-        <FinishedTaks />
+        <ViewDad title="Tareas terminadas📝" children={<TaksFinished />} /> //*terminada
       ) : view === "caduco" ? (
-        <ExpiredTaks />
+        <ViewDad title="Tareas expiradas⏰" children={<TaksExpired />} /> //*pendiente
       ) : view === "delete" ? (
-        <DeleteTaks />
+        <ViewDad title="Tareas eliminadas🗑" children={<TaksDeleteView />} /> //*terminada
       ) : (
         ""
       )}

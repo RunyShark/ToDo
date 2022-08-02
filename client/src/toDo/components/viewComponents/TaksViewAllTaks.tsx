@@ -12,7 +12,9 @@ export const TaksViewAllTaks = () => {
           Actualmente no tienes ninguna tarea creada
         </Typography>
       ) : (
-        todos.map((taksData: ResultRes) => <CardTaks {...taksData} />)
+        todos.map((taksData: ResultRes) => (
+          <CardTaks key={taksData._id} {...taksData} />
+        ))
       )}
     </>
   );

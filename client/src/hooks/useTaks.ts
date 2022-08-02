@@ -51,9 +51,23 @@ export const useTaks = () => {
   };
 
   const startSaveTaks = async (todo: PostTodoProps) => {
-    const { data }: { data: CreateNewTodoRes } =
-      await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
+    try {
+      const { data }: { data: CreateNewTodoRes } =
+        await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
+
+      //dispatch(onGetTodos());
+      dispatch(onAddNewTodo(data));
+      Swal.fire(data.msg, "Se agrego correctamente", "success");
+    } catch (error: any) {
+      console.log(error);
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
+
   const startUpdateTaks = async (todo: PutTodoProps) => {
     const { data }: { data: PutTodosRes } = await todoAPI.put<PutTodosRes>(
       `todo/updateTodo/${todo.id}`

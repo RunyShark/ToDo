@@ -4,7 +4,6 @@ import { Typography } from "@mui/material";
 
 export const TaksFinished = () => {
   const { todoCopia } = useTaks();
-  console.log("Soy yo", todoCopia);
 
   return (
     <>

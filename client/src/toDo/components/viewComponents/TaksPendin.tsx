@@ -2,9 +2,8 @@ import { useTaks, CardTaks } from "../../../index/index";
 import { ResultRes } from "../../../hooks/interfaces/interfaceTaks";
 import { Typography } from "@mui/material";
 
-export const PendinTaks = () => {
+export const TaksPendin = () => {
   const { todoCopia } = useTaks();
-  console.log("Soy yo", todoCopia);
 
   return (
     <>

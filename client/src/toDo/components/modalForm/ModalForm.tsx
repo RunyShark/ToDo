@@ -4,10 +4,11 @@ import * as yup from "yup";
 import { MyTextinput, MyChechBox, MyDate } from "../";
 import { Grid, Button } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
-import { useUIModal } from "../../../index/index";
+import { useUIModal, useTaks } from "../../../index";
 
 export const ModalForm = () => {
   const { modalClose } = useUIModal();
+  const { startSaveTaks, startGetTask } = useTaks();
 
   return (
     <div>
@@ -18,7 +19,9 @@ export const ModalForm = () => {
           text: "",
           important: false,
         }}
-        onSubmit={(values) => {
+        onSubmit={(value) => {
+          startSaveTaks(value);
+          startGetTask();
           modalClose();
         }}
         validationSchema={yup.object({
@@ -27,9 +30,14 @@ export const ModalForm = () => {
             .required("La fecha de finalización es obligatoria"),
           title: yup
             .string()
-            .required(
-              "Correo electrónico es un campo requerido para poder recuperar tu cuenta"
-            ),
+            .min(3, "El titulo debe de tener un minimo de 3 caracteres")
+            .max(20, "El titulo no puede tener mas de 20 caracteres")
+            .required("Titulo es un campo requerido"),
+          text: yup
+            .string()
+            .min(3, "La descripcion debe de tener un minimo de 3 caracteres")
+            .max(200, "La descripcion no puede tener mas de 200 caracteres")
+            .required("Descripcion es un campo requerido"),
         })}
       >
         {(formik) => (

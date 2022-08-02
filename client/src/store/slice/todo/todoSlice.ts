@@ -12,7 +12,15 @@ export const todoSlice = createSlice({
     view: "no-view",
   },
   reducers: {
-    onAddNewTodo: (state, { payload }) => {},
+    onAddNewTodo: (state, { payload }) => {
+      console.log(payload);
+      state.isSaving = true;
+      state.isLoadingTodos = true;
+      // state.messageSaved = payload.msg;
+      // state.todos = payload.results;
+      // state.todoCopia = payload.results;
+      state.view = "all";
+    },
     onDeleteTodo: (state, { payload }) => {},
     onUpdateTodo: (state, { payload }) => {},
 

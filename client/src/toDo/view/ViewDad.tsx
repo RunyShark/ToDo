@@ -1,7 +1,11 @@
 import { Grid, Typography } from "@mui/material";
-import { AddBox, StarOutline } from "@mui/icons-material";
-import { TaksViewAllTaks } from "../components/viewComponents/TaksViewAllTaks";
-export const ExpiredTaks = () => {
+
+interface Props {
+  children: JSX.Element;
+  title: string;
+}
+
+export const ViewDad = ({ children, title }: Props) => {
   return (
     <Grid
       className="animate__animated animate__fadeIn"
@@ -17,9 +21,9 @@ export const ExpiredTaks = () => {
       }}
     >
       <Typography color="white" variant="h5" sx={{ mt: 4 }}>
-        Tareas expiradas⏰
+        {title}
       </Typography>
-      <TaksViewAllTaks />
+      {children}
     </Grid>
   );
 };

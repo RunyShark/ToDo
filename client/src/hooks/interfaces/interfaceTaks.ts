@@ -85,7 +85,7 @@ export interface PutTodoProps {
 }
 
 export interface PostTodoProps {
-  tite: string;
+  title: string;
   dateEnd: string;
   text?: string;
   important?: boolean;
