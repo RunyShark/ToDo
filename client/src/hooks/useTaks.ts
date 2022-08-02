@@ -21,6 +21,7 @@ import {
   onLogoutUser,
   onPedingTodo,
   onUpdateTodo,
+  compareDate,
 } from "../index";
 export const useTaks = () => {
   const {
@@ -31,6 +32,7 @@ export const useTaks = () => {
     isLoadingTodos,
     view,
     update,
+    taksExpired,
   } = useSelector<unknown, any>((state: any) => state.todo);
   const dispatch = useDispatch();
 
@@ -41,11 +43,16 @@ export const useTaks = () => {
   const startSaveTaks = async (todo: any) => {
     try {
       if (todo._id) {
+        await todoAPI.put<CreateNewTodoRes>(
+          `/todo/updateTodo/${todo._id}`,
+          todo
+        );
+
+        Swal.fire("Actualización", "Se actualizo correctamente", "success");
       } else {
         const { data }: { data: CreateNewTodoRes } =
           await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
 
-        //dispatch(onGetTodos());
         dispatch(onAddNewTodo(data));
         Swal.fire(data.msg, "Se agrego correctamente", "success");
       }
@@ -60,6 +67,7 @@ export const useTaks = () => {
   };
 
   const startGetTask = async () => {
+    console.log("dede get");
     try {
       const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
         "/todo/getTodos"
@@ -83,11 +91,6 @@ export const useTaks = () => {
     }
   };
 
-  // const startUpdateTaks = async (todo: PutTodoProps) => {
-  //   const { data }: { data: PutTodosRes } = await todoAPI.put<PutTodosRes>(
-  //     `todo/updateTodo/${todo.id}`
-  //   );
-  // };
   const startDeleteTaks = async (id: string) => {
     const { data } = await todoAPI.delete(`todo/deleteTodo/${id}`);
   };
@@ -184,9 +187,13 @@ export const useTaks = () => {
           msg: data.msg,
           results,
         };
+
         dispatch(onGetTodos(obj));
+        await compareDate(results);
+
         dispatch(onExpiredTodo());
       } else {
+        await compareDate(taksExpired);
         dispatch(onExpiredTodo());
       }
     } catch (error: any) {
@@ -224,7 +231,12 @@ export const useTaks = () => {
     }
   };
 
+  const clearStater = () => {
+    dispatch(onLogoutUser());
+  };
+
   return {
+    taksExpired,
     update,
     view,
     todos,
@@ -236,12 +248,12 @@ export const useTaks = () => {
     startGetTask,
     startSaveTaks,
     startUpdate,
-    //startUpdateTaks,
     startDeleteTaks,
     importanTakns,
     pendigTaks,
     finishTaks,
     expiredTaks,
     deleteTaks,
+    clearStater,
   };
 };

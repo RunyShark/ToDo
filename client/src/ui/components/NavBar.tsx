@@ -1,12 +1,14 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { DrawerComponent } from "./DrawerComponent";
-import { useAuth } from "../../index";
+import { useAuth, useTaks } from "../../index";
 
 export const NavBar = ({ drawerWidth }: { drawerWidth?: number }) => {
   const { logout } = useAuth();
+  const { clearStater } = useTaks();
   const closeSecion = () => {
     logout();
+    clearStater();
   };
   return (
     <AppBar

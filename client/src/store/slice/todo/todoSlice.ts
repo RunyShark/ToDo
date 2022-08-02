@@ -9,6 +9,7 @@ export const todoSlice = createSlice({
     isLoadingTodos: false,
     todos: [],
     todoCopia: [],
+    taksExpired: [],
     update: null,
     view: "no-view",
   },
@@ -17,9 +18,6 @@ export const todoSlice = createSlice({
       console.log(payload);
       state.isSaving = true;
       state.isLoadingTodos = true;
-      // state.messageSaved = payload.msg;
-      // state.todos = payload.results;
-      // state.todoCopia = payload.results;
       state.view = "all";
     },
     onDeleteTodo: (state, { payload }) => {},
@@ -35,6 +33,7 @@ export const todoSlice = createSlice({
       state.messageSaved = payload.msg;
       state.todos = payload.results;
       state.todoCopia = payload.results;
+      state.taksExpired = payload.results;
       state.view = "all";
     },
 
@@ -44,7 +43,10 @@ export const todoSlice = createSlice({
       state.view = "importan";
       state.todoCopia = state.todos;
       state.todoCopia = state.todoCopia.filter(
-        (taks: any) => taks.important === true
+        (taks: any) =>
+          taks.important === true &&
+          taks.active === true &&
+          taks.deleted === false
       );
       state.messageSaved = "Importan";
     },
@@ -55,7 +57,7 @@ export const todoSlice = createSlice({
       state.view = "pending";
       state.todoCopia = state.todos;
       state.todoCopia = state.todoCopia.filter(
-        (taks: any) => taks.active === true
+        (taks: any) => taks.active === true && taks.deleted === false
       );
       state.messageSaved = "pending";
     },
@@ -72,13 +74,11 @@ export const todoSlice = createSlice({
     },
 
     onExpiredTodo: (state) => {
-      // state.isSaving = true;
-      // state.isLoadingTodos = true;
-      // state.view = "caduco";
-      // state.todoCopia = state.todoCopia.filter(
-      //   (taks: any) => taks.important === true
-      // );
-      // state.messageSaved = "caduco";
+      state.isSaving = true;
+      state.isLoadingTodos = true;
+      state.view = "caduco";
+      state.todoCopia = state.todos;
+      state.messageSaved = "caduco";
     },
 
     onDeleteSaveTodos: (state) => {
@@ -99,8 +99,15 @@ export const todoSlice = createSlice({
     },
 
     onLogoutUser: (state) => {
-      state.isLoadingTodos = true;
+      state.error = null;
+      state.isSaving = false;
+      state.messageSaved = "";
+      state.isLoadingTodos = false;
       state.todos = [];
+      state.todoCopia = [];
+      state.taksExpired = [];
+      state.update = null;
+      state.view = "no-view";
     },
   },
 });

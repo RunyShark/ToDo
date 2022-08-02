@@ -12,7 +12,7 @@ import { DeleteOutlined, SaveOutlined } from "@mui/icons-material";
 import { Favorite } from "@mui/icons-material";
 
 export const UpdateNote = () => {
-  const { update } = useTaks();
+  const { update, startSaveTaks, startGetTask } = useTaks();
 
   const { handleChange, values, handleSubmit } = useFormik({
     initialValues: {
@@ -23,8 +23,9 @@ export const UpdateNote = () => {
       deleted: update.deleted,
       important: update.important,
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      await startSaveTaks(values);
+      startGetTask();
     },
   });
 
@@ -81,7 +82,7 @@ export const UpdateNote = () => {
           />
           <Grid>
             <FormControlLabel
-              label={values.active ? "Terminada" : "Pendiente"}
+              label={values.active ? "Pendiente" : "Terminada"}
               control={
                 <Checkbox
                   color="info"

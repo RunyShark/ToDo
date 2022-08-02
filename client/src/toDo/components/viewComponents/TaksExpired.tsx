@@ -3,16 +3,16 @@ import { Typography } from "@mui/material";
 import { useTaks } from "../../../index/index";
 import { CardTaks } from "../viewComponents/cards/CardTaks";
 export const TaksExpired = () => {
-  const { todoCopia } = useTaks();
+  const { taksExpired } = useTaks();
 
   return (
     <>
-      {todoCopia.length === 0 ? (
+      {taksExpired.length === 0 ? (
         <Typography variant="h5" sx={{ color: "white" }}>
           No tienes tareas expiradas
         </Typography>
       ) : (
-        todoCopia.map((taksData: ResultRes) => (
+        taksExpired.map((taksData: ResultRes) => (
           <CardTaks key={taksData._id} {...taksData} />
         ))
       )}

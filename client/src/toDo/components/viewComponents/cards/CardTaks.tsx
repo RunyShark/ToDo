@@ -1,11 +1,17 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Button } from "@mui/material";
 
-import { FavoriteBorder, Favorite, CheckCircle } from "@mui/icons-material";
+import {
+  FavoriteBorder,
+  Favorite,
+  Upgrade,
+  LibraryBooks,
+  Delete,
+  Beenhere,
+} from "@mui/icons-material";
 
 import { ResultRes } from "../../../../hooks/interfaces/interfaceTaks";
-import ListItemButton from "@mui/material/ListItemButton";
-import { useTaks } from "../../../../hooks/useTaks";
 
+import { useTaks } from "../../../../hooks/useTaks";
 export const CardTaks = ({
   _id,
   active,
@@ -81,51 +87,101 @@ export const CardTaks = ({
         <Typography variant="h5" sx={{ mt: 1, mb: 1, fontWeight: "bold" }}>
           {title}
         </Typography>
-        <ListItemButton onClick={onActiveTask}>
-          <Grid container justifyContent="center">
-            <Typography sx={{ fontFamily: "inherit" }}>
-              {/* Fecha de creacion:{" "}
+
+        <Grid container justifyContent="center">
+          <Typography sx={{ fontFamily: "inherit" }}>
+            {/* Fecha de creacion:{" "}
               <span style={{ fontFamily: "initial" }}>
                 {dateStart.toString()}
               </span>{" "} */}
-              Categoria:{" "}
-              <strong style={{ color: important ? "green" : "grey" }}>
-                {important ? "Importante" : "No importante"}
-              </strong>
-              , fecha de finalizacion:{" "}
-              <span style={{ fontFamily: "initial" }}>
-                {dateEnd.toString()}
-              </span>
-            </Typography>
-          </Grid>
-        </ListItemButton>
+            Categoria:{" "}
+            <strong style={{ color: important ? "green" : "grey" }}>
+              {important ? "Importante" : "No importante"}
+            </strong>
+            , fecha de finalizacion:{" "}
+            <span style={{ fontFamily: "initial" }}>{dateEnd.toString()}</span>
+          </Typography>
+        </Grid>
+
         <Grid container justifyContent="center">
           <Grid item xs={5}>
             <p style={{ fontSize: "17px" }}>{text}</p>
           </Grid>
         </Grid>
-
         <Grid container justifyContent="end">
           <Grid item justifyContent="end">
             <Grid container>
-              <CheckCircle
-                color="info"
-                sx={{
-                  fontSize: 30,
-                  mt: 2,
-                }}
-              />
+              {active ? (
+                <LibraryBooks
+                  color="warning"
+                  sx={{
+                    fontSize: 20,
+                    mt: 2,
+                  }}
+                />
+              ) : (
+                <Beenhere
+                  color="info"
+                  sx={{
+                    fontSize: 20,
+                    mt: 2,
+                  }}
+                />
+              )}
+
               <Typography
                 sx={{
-                  mr: 45,
+                  mr: 25,
                   ml: 1,
+                  mb: 1,
                   mt: 2.5,
                   fontFamily: "unset",
                   color: active ? "green" : "brack",
                 }}
               >
-                {active ? "Completada" : "Pendiente"}
+                {active ? "Pendiente" : "Completada"}
               </Typography>
+              {deleted ? (
+                <Delete
+                  color="secondary"
+                  sx={{
+                    fontSize: 20,
+                    mt: 2,
+                    mr: 1,
+                  }}
+                />
+              ) : (
+                <Beenhere
+                  color="info"
+                  sx={{
+                    fontSize: 20,
+                    mt: 2,
+                  }}
+                />
+              )}
+
+              <Typography
+                sx={{
+                  mr: 22,
+                  ml: 1,
+                  mb: 1,
+                  mt: 2.5,
+                  fontFamily: "unset",
+                  color: deleted ? "red" : "brack",
+                }}
+              >
+                {deleted ? "Eliminada" : "Activa"}
+              </Typography>
+              <Button
+                onClick={onActiveTask}
+                color="primary"
+                sx={{
+                  mr: 1,
+                }}
+              >
+                <Upgrade />
+                <Typography>Actualizar tarea</Typography>{" "}
+              </Button>
             </Grid>
           </Grid>
         </Grid>
