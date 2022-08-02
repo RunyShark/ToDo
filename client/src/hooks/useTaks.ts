@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import todoAPI from "../api/todoAPI";
+import Swal from "sweetalert2";
 import {
   CreateNewTodoRes,
   GetTodosRes,
@@ -22,25 +23,31 @@ import {
   onUpdateTodo,
 } from "../index";
 export const useTaks = () => {
-  const { todos, isSaving, messageSaved, isLoadingTodos, view } = useSelector<
-    unknown,
-    any
-  >((state: any) => state.todo);
+  const { todos, todoCopia, isSaving, messageSaved, isLoadingTodos, view } =
+    useSelector<unknown, any>((state: any) => state.todo);
   const dispatch = useDispatch();
 
   const startGetTask = async () => {
-    const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
-      "/todo/getTodos"
-    );
+    try {
+      const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+        "/todo/getTodos"
+      );
 
-    const results = conversDateTodo(data.results);
+      const results = conversDateTodo(data.results);
 
-    const obj = {
-      Error: data.Error,
-      msg: data.msg,
-      results,
-    };
-    dispatch(onGetTodos(obj));
+      const obj = {
+        Error: data.Error,
+        msg: data.msg,
+        results,
+      };
+      dispatch(onGetTodos(obj));
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
 
   const startSaveTaks = async (todo: PostTodoProps) => {
@@ -56,26 +63,142 @@ export const useTaks = () => {
     const { data } = await todoAPI.delete(`todo/deleteTodo/${id}`);
   };
 
-  const importanTakns = () => {
-    dispatch(onImportanTodo());
+  const importanTakns = async () => {
+    try {
+      if (todos.length === 0) {
+        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+          "/todo/getTodos"
+        );
+        const results = conversDateTodo(data.results);
+
+        const obj = {
+          Error: data.Error,
+          msg: data.msg,
+          results,
+        };
+        dispatch(onGetTodos(obj));
+        dispatch(onImportanTodo());
+      } else {
+        dispatch(onImportanTodo());
+      }
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
 
-  const pendigTaks = () => {
-    dispatch(onPedingTodo());
+  const pendigTaks = async () => {
+    try {
+      if (todos.length === 0) {
+        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+          "/todo/getTodos"
+        );
+        const results = conversDateTodo(data.results);
+
+        const obj = {
+          Error: data.Error,
+          msg: data.msg,
+          results,
+        };
+        dispatch(onGetTodos(obj));
+        dispatch(onPedingTodo());
+      } else {
+        dispatch(onPedingTodo());
+      }
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
-  const finishTaks = () => {
-    dispatch(onFinishTodo());
+  const finishTaks = async () => {
+    try {
+      if (todos.length === 0) {
+        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+          "/todo/getTodos"
+        );
+        const results = conversDateTodo(data.results);
+
+        const obj = {
+          Error: data.Error,
+          msg: data.msg,
+          results,
+        };
+        dispatch(onGetTodos(obj));
+        dispatch(onFinishTodo());
+      } else {
+        dispatch(onFinishTodo());
+      }
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
-  const expiredTaks = () => {
-    dispatch(onExpiredTodo());
+  const expiredTaks = async () => {
+    try {
+      if (todos.length === 0) {
+        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+          "/todo/getTodos"
+        );
+        const results = conversDateTodo(data.results);
+
+        const obj = {
+          Error: data.Error,
+          msg: data.msg,
+          results,
+        };
+        dispatch(onGetTodos(obj));
+        dispatch(onExpiredTodo());
+      } else {
+        dispatch(onExpiredTodo());
+      }
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
-  const deleteTaks = () => {
-    dispatch(onDeleteSaveTodos());
+  const deleteTaks = async () => {
+    try {
+      if (todos.length === 0) {
+        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+          "/todo/getTodos"
+        );
+        const results = conversDateTodo(data.results);
+
+        const obj = {
+          Error: data.Error,
+          msg: data.msg,
+          results,
+        };
+        dispatch(onGetTodos(obj));
+        dispatch(onDeleteSaveTodos());
+      } else {
+        dispatch(onDeleteSaveTodos());
+      }
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
 
   return {
     view,
     todos,
+    todoCopia,
     isSaving,
     messageSaved,
     isLoadingTodos,

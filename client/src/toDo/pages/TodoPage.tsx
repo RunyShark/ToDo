@@ -28,8 +28,10 @@ export const TodoPage = () => {
         <FinishedTaks />
       ) : view === "caduco" ? (
         <ExpiredTaks />
-      ) : (
+      ) : view === "delete" ? (
         <DeleteTaks />
+      ) : (
+        ""
       )}
 
       <TaksModal />

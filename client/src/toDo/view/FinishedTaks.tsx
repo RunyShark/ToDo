@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import { AddBox, StarOutline } from "@mui/icons-material";
-
+import { TaksViewAllTaks } from "../components/viewComponents/TaksViewAllTaks";
 export const FinishedTaks = () => {
   return (
     <Grid
@@ -16,14 +16,10 @@ export const FinishedTaks = () => {
         borderRadius: 5,
       }}
     >
-      <Grid item xs={12}>
-        <AddBox sx={{ fontSize: 100, color: "white" }} />
-      </Grid>
-      <Grid item xs={12}>
-        <Typography color="white" variant="h5">
-          Fis
-        </Typography>
-      </Grid>
+      <Typography color="white" variant="h5" sx={{ mt: 4 }}>
+        Tareas terminadas📝
+      </Typography>
+      <TaksViewAllTaks />
     </Grid>
   );
 };

@@ -44,7 +44,8 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
       case "Tareas vencidas":
         expiredTaks();
         break;
-      case "Tareas eliminadas":
+      case "Papelera":
+        console.log("Papelera");
         deleteTaks();
         break;
       default:
@@ -79,7 +80,7 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
             "Tareas pendientes",
             "Tareas finalizadas",
             "Tareas vencidas",
-            "Tareas eliminadas",
+            "Papelera",
           ].map((note) => (
             <ListItem key={note} disablePadding sx={{ mb: 5 }}>
               <ListItemButton onClick={() => onTaks(note)}>

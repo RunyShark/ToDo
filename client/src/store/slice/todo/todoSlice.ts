@@ -26,29 +26,65 @@ export const todoSlice = createSlice({
     },
 
     onImportanTodo: (state) => {
+      state.isSaving = true;
+      state.isLoadingTodos = true;
       state.view = "importan";
+      state.todoCopia = state.todos;
+      state.todoCopia = state.todoCopia.filter(
+        (taks: any) => taks.important === true
+      );
+      state.messageSaved = "Importan";
     },
 
     onPedingTodo: (state) => {
+      state.isSaving = true;
+      state.isLoadingTodos = true;
       state.view = "pending";
+      state.todoCopia = state.todos;
+      state.todoCopia = state.todoCopia.filter(
+        (taks: any) => taks.active === true
+      );
+      state.messageSaved = "pending";
     },
 
     onFinishTodo: (state) => {
+      state.isSaving = true;
+      state.isLoadingTodos = true;
       state.view = "fishs";
+      state.todoCopia = state.todos;
+      state.todoCopia = state.todoCopia.filter(
+        (taks: any) => taks.active === false
+      );
+      state.messageSaved = "fishs";
     },
 
     onExpiredTodo: (state) => {
-      state.view = "caduco";
+      // state.isSaving = true;
+      // state.isLoadingTodos = true;
+      // state.view = "caduco";
+      // state.todoCopia = state.todoCopia.filter(
+      //   (taks: any) => taks.important === true
+      // );
+      // state.messageSaved = "caduco";
     },
 
     onDeleteSaveTodos: (state) => {
-      state.view = "deletetaks";
+      state.isSaving = true;
+      state.isLoadingTodos = true;
+      state.view = "delete";
+      state.todoCopia = state.todos;
+      state.todoCopia = state.todoCopia.filter(
+        (taks: any) => taks.deleted === true
+      );
+
+      state.messageSaved = "caduco";
     },
 
     onFinishSaving: (state) => {
       state.isSaving = false;
       state.isLoadingTodos = false;
     },
+
     onLogoutUser: (state) => {
       state.isLoadingTodos = true;
       state.todos = [];

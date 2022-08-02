@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import { AddBox, StarOutline } from "@mui/icons-material";
+import { TaksDeleteView } from "../components/viewComponents/TaksDeleteView";
 
 export const DeleteTaks = () => {
   return (
@@ -16,14 +16,10 @@ export const DeleteTaks = () => {
         borderRadius: 5,
       }}
     >
-      <Grid item xs={12}>
-        <AddBox sx={{ fontSize: 100, color: "white" }} />
-      </Grid>
-      <Grid item xs={12}>
-        <Typography color="white" variant="h5">
-          Delte
-        </Typography>
-      </Grid>
+      <Typography color="white" variant="h5" sx={{ mt: 4 }}>
+        Tareas eliminadas🗑
+      </Typography>
+      <TaksDeleteView />
     </Grid>
   );
 };

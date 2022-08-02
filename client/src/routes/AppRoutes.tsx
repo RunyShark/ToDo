@@ -1,12 +1,14 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { AuthRoutes, TodoRoutes, useAuth } from "../index";
+import { AuthRoutes, TodoRoutes, useAuth, useTaks } from "../index";
 
 export const AppRoutes = () => {
   const { status, checkAuthToken } = useAuth();
+  const { startGetTask, todos } = useTaks();
   useEffect(() => {
     checkAuthToken();
   }, []);
+
   if (status === "checking") {
     return <h3>Cargando...</h3>;
   }

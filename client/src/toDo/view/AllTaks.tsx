@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material";
-import { CardTaks } from "../../index";
+import { Grid, Typography } from "@mui/material";
+import { TaksViewAllTaks } from "../components/viewComponents/TaksViewAllTaks";
 
 export const AllTaks = () => {
   return (
@@ -16,7 +16,10 @@ export const AllTaks = () => {
         borderRadius: 5,
       }}
     >
-      <CardTaks />
+      <Typography color="white" variant="h5" sx={{ mt: 4 }}>
+        Todas mis tareas📖
+      </Typography>
+      <TaksViewAllTaks />
     </Grid>
   );
 };

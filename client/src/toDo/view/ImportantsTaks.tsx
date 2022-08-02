@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import { AddBox, StarOutline } from "@mui/icons-material";
-
+import { TaksViewAllTaks } from "../components/viewComponents/TaksViewAllTaks";
 export const ImportantsTaks = () => {
   return (
     <Grid
@@ -16,14 +16,10 @@ export const ImportantsTaks = () => {
         borderRadius: 5,
       }}
     >
-      <Grid item xs={12}>
-        <AddBox sx={{ fontSize: 100, color: "white" }} />
-      </Grid>
-      <Grid item xs={12}>
-        <Typography color="white" variant="h5">
-          imp
-        </Typography>
-      </Grid>
+      <Typography color="white" variant="h5" sx={{ mt: 4 }}>
+        Tareas importantes🌟
+      </Typography>
+      <TaksViewAllTaks />
     </Grid>
   );
 };
