@@ -26,7 +26,6 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
   const { user } = useAuth();
 
   const onTaks = (action: string) => {
-    console.log(action);
     switch (action) {
       case "Todas mis tareas":
         startGetTask();

@@ -10,6 +10,7 @@ import {
   TaksExpired,
   TaksFinished,
   TaksImportants,
+  UpdateNote,
 } from "../../index";
 
 export const TodoPage = () => {
@@ -31,6 +32,8 @@ export const TodoPage = () => {
         <ViewDad title="Tareas expiradas⏰" children={<TaksExpired />} /> //*pendiente
       ) : view === "delete" ? (
         <ViewDad title="Tareas eliminadas🗑" children={<TaksDeleteView />} /> //*terminada
+      ) : view === "actualizar" ? (
+        <ViewDad title="ActualizarNote" children={<UpdateNote />} /> //*terminada
       ) : (
         ""
       )}

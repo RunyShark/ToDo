@@ -4,10 +4,13 @@ import * as yup from "yup";
 import { MyTextinput, MyChechBox, MyDate } from "..";
 import { Grid, Button } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
-import { useUIModal } from "../../../index/index";
+import { useUIModal, useTaks } from "../../../index/index";
 
 export const ModalFormUpdate = () => {
-  const { modalClose } = useUIModal();
+  const { todos } = useTaks();
+  const { modalClose, ref } = useUIModal();
+  const { active } = todos;
+  const { title } = ref;
 
   return (
     <div>
@@ -15,6 +18,7 @@ export const ModalFormUpdate = () => {
         initialValues={{
           title: "",
           text: "",
+          active: true,
         }}
         onSubmit={(values) => {
           console.log(values);
@@ -49,6 +53,8 @@ export const ModalFormUpdate = () => {
               minRows={4}
               placeholder="Descripcion"
             />
+            <MyChechBox label="Importante" name="important" />
+            <MyChechBox label="Importante" name="important" />
             <MyChechBox label="Importante" name="important" />
             <Grid item>
               <Button color="primary" sx={{ padding: 2 }} type="submit">

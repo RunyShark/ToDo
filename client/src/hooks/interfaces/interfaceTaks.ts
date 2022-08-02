@@ -75,7 +75,7 @@ export interface Todo {
 }
 
 export interface PutTodoProps {
-  id: string;
+  _id: string;
   tite?: string;
   text?: string;
   dateEnd?: string;

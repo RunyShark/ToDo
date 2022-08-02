@@ -11,3 +11,4 @@ export * from "./viewComponents/TaksFinished";
 export * from "./viewComponents/TaksImportants";
 export * from "./viewComponents/TaksPendin";
 export * from "./viewComponents/TaksViewAllTaks";
+export * from "./viewComponents/UpdateNote";

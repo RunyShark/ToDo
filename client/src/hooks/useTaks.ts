@@ -23,9 +23,41 @@ import {
   onUpdateTodo,
 } from "../index";
 export const useTaks = () => {
-  const { todos, todoCopia, isSaving, messageSaved, isLoadingTodos, view } =
-    useSelector<unknown, any>((state: any) => state.todo);
+  const {
+    todos,
+    todoCopia,
+    isSaving,
+    messageSaved,
+    isLoadingTodos,
+    view,
+    update,
+  } = useSelector<unknown, any>((state: any) => state.todo);
   const dispatch = useDispatch();
+
+  const startUpdate = async (datos: any) => {
+    dispatch(onUpdateTodo(datos));
+  };
+
+  const startSaveTaks = async (todo: any) => {
+    try {
+      if (todo._id) {
+      } else {
+        const { data }: { data: CreateNewTodoRes } =
+          await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
+
+        //dispatch(onGetTodos());
+        dispatch(onAddNewTodo(data));
+        Swal.fire(data.msg, "Se agrego correctamente", "success");
+      }
+    } catch (error: any) {
+      console.log(error);
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
+  };
 
   const startGetTask = async () => {
     try {
@@ -51,29 +83,11 @@ export const useTaks = () => {
     }
   };
 
-  const startSaveTaks = async (todo: PostTodoProps) => {
-    try {
-      const { data }: { data: CreateNewTodoRes } =
-        await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
-
-      //dispatch(onGetTodos());
-      dispatch(onAddNewTodo(data));
-      Swal.fire(data.msg, "Se agrego correctamente", "success");
-    } catch (error: any) {
-      console.log(error);
-      if (error.response.data.msg) {
-        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
-        return;
-      }
-      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
-    }
-  };
-
-  const startUpdateTaks = async (todo: PutTodoProps) => {
-    const { data }: { data: PutTodosRes } = await todoAPI.put<PutTodosRes>(
-      `todo/updateTodo/${todo.id}`
-    );
-  };
+  // const startUpdateTaks = async (todo: PutTodoProps) => {
+  //   const { data }: { data: PutTodosRes } = await todoAPI.put<PutTodosRes>(
+  //     `todo/updateTodo/${todo.id}`
+  //   );
+  // };
   const startDeleteTaks = async (id: string) => {
     const { data } = await todoAPI.delete(`todo/deleteTodo/${id}`);
   };
@@ -211,6 +225,7 @@ export const useTaks = () => {
   };
 
   return {
+    update,
     view,
     todos,
     todoCopia,
@@ -220,7 +235,8 @@ export const useTaks = () => {
     //*f
     startGetTask,
     startSaveTaks,
-    startUpdateTaks,
+    startUpdate,
+    //startUpdateTaks,
     startDeleteTaks,
     importanTakns,
     pendigTaks,

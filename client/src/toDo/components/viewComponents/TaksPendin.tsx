@@ -12,7 +12,9 @@ export const TaksPendin = () => {
           Actualmente no tienes tareas pendientes
         </Typography>
       ) : (
-        todoCopia.map((taksData: ResultRes) => <CardTaks {...taksData} />)
+        todoCopia.map((taksData: ResultRes) => (
+          <CardTaks key={taksData._id} {...taksData} />
+        ))
       )}
     </>
   );

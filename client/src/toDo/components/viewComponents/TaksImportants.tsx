@@ -12,7 +12,9 @@ export const TaksImportants = () => {
           No tienes tareas importantes
         </Typography>
       ) : (
-        todoCopia.map((taksData: ResultRes) => <CardTaks {...taksData} />)
+        todoCopia.map((taksData: ResultRes) => (
+          <CardTaks key={taksData._id} {...taksData} />
+        ))
       )}
     </>
   );

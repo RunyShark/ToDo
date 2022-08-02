@@ -12,7 +12,9 @@ export const TaksFinished = () => {
           No tienes tareas finalizada
         </Typography>
       ) : (
-        todoCopia.map((taksData: ResultRes) => <CardTaks {...taksData} />)
+        todoCopia.map((taksData: ResultRes) => (
+          <CardTaks key={taksData._id} {...taksData} />
+        ))
       )}
     </>
   );

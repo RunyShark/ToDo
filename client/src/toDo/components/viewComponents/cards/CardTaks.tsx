@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import {
   Card,
   Grid,
@@ -9,9 +10,17 @@ import {
   Button,
 } from "@mui/material";
 
-import { FavoriteBorder, Favorite, DeleteOutlined } from "@mui/icons-material";
-import { useTaks, ModalUpdate } from "../../../../index/index";
+import {
+  FavoriteBorder,
+  Favorite,
+  DeleteOutlined,
+  CheckCircle,
+} from "@mui/icons-material";
+import { ModalUpdate } from "../../index";
 import { ResultRes } from "../../../../hooks/interfaces/interfaceTaks";
+import ListItemButton from "@mui/material/ListItemButton";
+import { useUIModal } from "../../../../hooks/useUIModal";
+import { useTaks } from "../../../../hooks/useTaks";
 
 export const CardTaks = ({
   _id,
@@ -24,6 +33,24 @@ export const CardTaks = ({
   title,
   user,
 }: ResultRes) => {
+  const { startUpdate } = useTaks();
+  const { modalUpdateOpen } = useUIModal();
+  const note = {
+    _id,
+    active,
+    dateEnd,
+    dateStart,
+    deleted,
+    important,
+    text,
+    title,
+    user,
+  };
+
+  const onActiveTask = () => {
+    startUpdate(note);
+  };
+
   return (
     <>
       <Grid
@@ -47,36 +74,47 @@ export const CardTaks = ({
         }}
       >
         <Grid container justifyContent="end">
-          <Checkbox
-            color="error"
-            icon={<FavoriteBorder />}
-            checkedIcon={<Favorite />}
-            defaultChecked={important}
-            sx={{
-              "& .MuiSvgIcon-root": { fontSize: 30 },
-            }}
-          />
+          {important ? (
+            <Favorite
+              color="error"
+              sx={{
+                fontSize: 30,
+                mr: 1,
+                mt: 1,
+              }}
+            />
+          ) : (
+            <FavoriteBorder
+              sx={{
+                fontSize: 30,
+                mr: 1,
+                mt: 1,
+              }}
+            />
+          )}
         </Grid>
-        <Typography variant="h5" sx={{ mt: 1 }}>
+
+        <Typography variant="h5" sx={{ mt: 1, mb: 1, fontWeight: "bold" }}>
           {title}
         </Typography>
-        <Grid container justifyContent="center">
-          <Typography>
-            {/* Fecha de creacion:{" "}
+        <ListItemButton onClick={onActiveTask}>
+          <Grid container justifyContent="center">
+            <Typography sx={{ fontFamily: "inherit" }}>
+              {/* Fecha de creacion:{" "}
               <span style={{ fontFamily: "initial" }}>
                 {dateStart.toString()}
               </span>{" "} */}
-            Categoria:{" "}
-            {important ? (
-              <span style={{ color: "green" }}>importante</span>
-            ) : (
-              "no es importante"
-            )}
-            , fecha de finalizacion:{" "}
-            <span style={{ fontFamily: "initial" }}>{dateEnd.toString()}</span>
-          </Typography>
-        </Grid>
-
+              Categoria:{" "}
+              <strong style={{ color: important ? "green" : "grey" }}>
+                {important ? "Importante" : "No importante"}
+              </strong>
+              , fecha de finalizacion:{" "}
+              <span style={{ fontFamily: "initial" }}>
+                {dateEnd.toString()}
+              </span>
+            </Typography>
+          </Grid>
+        </ListItemButton>
         <Grid container justifyContent="center">
           <Grid item xs={5}>
             <p style={{ fontSize: "17px" }}>{text}</p>
@@ -86,22 +124,28 @@ export const CardTaks = ({
         <Grid container justifyContent="end">
           <Grid item justifyContent="end">
             <Grid container>
-              <p>{active ? "Completada" : "Pendiente"}</p>
-              <Checkbox
+              <CheckCircle
                 color="info"
-                defaultChecked={active}
                 sx={{
-                  mr: 50,
-                  "& .MuiSvgIcon-root": { fontSize: 30 },
+                  fontSize: 30,
+                  mt: 2,
                 }}
               />
-              <ModalUpdate props="hola" />
-              <Button color="error" sx={{ ml: 3 }}>
-                <DeleteOutlined />
-                Eliminar
-              </Button>
+              <Typography
+                sx={{
+                  mr: 45,
+                  ml: 1,
+                  mt: 2.5,
+                  fontFamily: "unset",
+                  color: active ? "green" : "brack",
+                }}
+              >
+                {active ? "Completada" : "Pendiente"}
+              </Typography>
             </Grid>
           </Grid>
+
+          <ModalUpdate />
         </Grid>
       </Grid>
     </>

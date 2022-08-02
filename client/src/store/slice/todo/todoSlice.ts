@@ -9,6 +9,7 @@ export const todoSlice = createSlice({
     isLoadingTodos: false,
     todos: [],
     todoCopia: [],
+    update: null,
     view: "no-view",
   },
   reducers: {
@@ -22,7 +23,11 @@ export const todoSlice = createSlice({
       state.view = "all";
     },
     onDeleteTodo: (state, { payload }) => {},
-    onUpdateTodo: (state, { payload }) => {},
+
+    onUpdateTodo: (state, { payload }) => {
+      state.update = payload;
+      state.view = "actualizar";
+    },
 
     onGetTodos: (state, { payload }) => {
       state.isSaving = true;

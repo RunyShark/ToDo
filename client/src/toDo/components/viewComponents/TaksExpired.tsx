@@ -12,7 +12,9 @@ export const TaksExpired = () => {
           No tienes tareas expiradas
         </Typography>
       ) : (
-        todoCopia.map((taksData: ResultRes) => <CardTaks {...taksData} />)
+        todoCopia.map((taksData: ResultRes) => (
+          <CardTaks key={taksData._id} {...taksData} />
+        ))
       )}
     </>
   );

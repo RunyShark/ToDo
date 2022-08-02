@@ -12,7 +12,9 @@ export const TaksDeleteView = () => {
           Actualmente tu papelera se encuentra vacia
         </Typography>
       ) : (
-        todoCopia.map((taksData: ResultRes) => <CardTaks {...taksData} />)
+        todoCopia.map((taksData: ResultRes) => (
+          <CardTaks key={taksData._id} {...taksData} />
+        ))
       )}
     </>
   );

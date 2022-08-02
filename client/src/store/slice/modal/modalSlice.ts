@@ -5,12 +5,14 @@ export const modalSlice = createSlice({
   initialState: {
     modalState: false,
     modalUpdate: false,
+    ref: null,
   },
   reducers: {
     onOpenDateModal: (state) => {
       state.modalState = true;
     },
-    onOpenModalUpdate: (state) => {
+    onOpenModalUpdate: (state, { payload }) => {
+      state.ref = payload;
       state.modalUpdate = true;
     },
     onCloseDateModal: (state) => {

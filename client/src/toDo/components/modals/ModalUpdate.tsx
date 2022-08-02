@@ -9,7 +9,8 @@ import {
 } from "@mui/material";
 import { useUIModal } from "../../../index/index";
 import { ModalFormUpdate } from "../modalForm/ModalFormUpdate";
-import { AddCircle } from "@mui/icons-material";
+import { Upgrade } from "@mui/icons-material";
+import { useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -22,22 +23,14 @@ const style = {
   borderRadius: 5,
 };
 
-export const ModalUpdate = ({ props }: { props: string }) => {
+export const ModalUpdate = () => {
   const { modalUpdate, modalClose, modalUpdateOpen } = useUIModal();
 
+  const [updateInfor, setupdateInfor] = useState({
+    titie: "",
+  });
   return (
     <div>
-      <Button
-        onClick={modalUpdateOpen}
-        size="large"
-        sx={{
-          ml: 3,
-          mt: 1,
-        }}
-      >
-        <AddCircle />
-        Crear
-      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -55,7 +48,10 @@ export const ModalUpdate = ({ props }: { props: string }) => {
               Actualizar tarea
             </Typography>
             <Divider />
-            <ModalFormUpdate />
+            {/* <ModalFormUpdate /> */}
+            <form>
+              <input type="text" value={updateInfor.titie} />
+            </form>
           </Box>
         </Fade>
       </Modal>
