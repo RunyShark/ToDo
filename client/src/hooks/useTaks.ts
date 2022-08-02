@@ -7,7 +7,13 @@ import {
   PutTodoProps,
   PutTodosRes,
 } from "./interfaces/interfaceTaks";
-import { onAddNewTodo, onDeleteTodo, onUpdateTodo, onGetTodos } from "../index";
+import {
+  onAddNewTodo,
+  onDeleteTodo,
+  onUpdateTodo,
+  onGetTodos,
+  conversDateTodo,
+} from "../index";
 export const useTaks = () => {
   const { todos, isSaving, messageSaved, isLoadingTodos, view } = useSelector<
     unknown,
@@ -19,7 +25,15 @@ export const useTaks = () => {
     const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
       "/todo/getTodos"
     );
-    dispatch(onGetTodos(data));
+
+    const results = conversDateTodo(data.results);
+
+    const obj = {
+      Error: data.Error,
+      msg: data.msg,
+      results,
+    };
+    dispatch(onGetTodos(obj));
   };
 
   const startSaveTaks = async (todo: PostTodoProps) => {

@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 import { FavoriteBorder, Favorite, DeleteOutlined } from "@mui/icons-material";
-import { useTaks } from "../../index";
+import { useTaks, ModalUpdate } from "../../index";
 import { ResultRes } from "../../hooks/interfaces/interfaceTaks";
 
 export const CardTaks = () => {
@@ -64,77 +64,51 @@ export const CardTaks = () => {
             <Typography variant="h5" sx={{ mt: 1 }}>
               {title}
             </Typography>
-            <p>
-              Categoria:{" "}
-              {important ? (
-                <span style={{ color: "green" }}>importante</span>
-              ) : (
-                "no es importante"
-              )}
-            </p>
+            <Grid container justifyContent="center">
+              <Typography>
+                {/* Fecha de creacion:{" "}
+              <span style={{ fontFamily: "initial" }}>
+                {dateStart.toString()}
+              </span>{" "} */}
+                Categoria:{" "}
+                {important ? (
+                  <span style={{ color: "green" }}>importante</span>
+                ) : (
+                  "no es importante"
+                )}
+                , fecha de finalizacion:{" "}
+                <span style={{ fontFamily: "initial" }}>
+                  {dateEnd.toString()}
+                </span>
+              </Typography>
+            </Grid>
 
             <Grid container justifyContent="center">
-              <Grid item xs={8}>
-                <p style={{ fontSize: "15px", color: "black" }}>
-                  Fecha de creacion:{" "}
-                  <span style={{ fontFamily: "initial" }}>{dateStart}</span>
-                  Fecha de finalizacion:
-                  <span style={{ fontFamily: "initial" }}>{dateEnd}</span>
-                </p>
-              </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={5}>
                 <p style={{ fontSize: "17px" }}>{text}</p>
               </Grid>
             </Grid>
 
-            {/* <Grid container justifyContent="end" sx={{ mb: 2 }}>
-              <Grid item justifyContent="end">
-               
-              </Grid>
-            </Grid> */}
             <Grid container justifyContent="end">
               <Grid item justifyContent="end">
-                <p>{active ? "Completada" : "Pendiente"}</p>
-                <Checkbox
-                  color="info"
-                  defaultChecked={active}
-                  sx={{ mr: 60, mb: 1, "& .MuiSvgIcon-root": { fontSize: 30 } }}
-                />
-
-                <Button color="error" sx={{ ml: 3 }}>
-                  <DeleteOutlined />
-                  Eliminar
-                </Button>
-
-                <Button color="secondary" sx={{ ml: 3 }}>
-                  actualizar
-                </Button>
-              </Grid>
-            </Grid>
-
-            {/* <Grid container justifyContent="end">
-                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-              </Grid>
-  
-              <CardActionArea>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {text}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button color="primary">Terminar</Button>
-                <Grid container justifyContent="end">
-                  <Button color="error">
+                <Grid container>
+                  <p>{active ? "Completada" : "Pendiente"}</p>
+                  <Checkbox
+                    color="info"
+                    defaultChecked={active}
+                    sx={{
+                      mr: 50,
+                      "& .MuiSvgIcon-root": { fontSize: 30 },
+                    }}
+                  />
+                  <ModalUpdate props="hola" />
+                  <Button color="error" sx={{ ml: 3 }}>
                     <DeleteOutlined />
                     Eliminar
                   </Button>
                 </Grid>
-              </CardActions> */}
+              </Grid>
+            </Grid>
           </Grid>
         )
       )}
