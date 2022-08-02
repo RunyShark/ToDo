@@ -4,6 +4,11 @@ import {
   AllTaks,
   useTaks,
   NothingSelectedView,
+  DeleteTaks,
+  ExpiredTaks,
+  FinishedTaks,
+  ImportantsTaks,
+  PendinTaks,
 } from "../../index";
 
 export const TodoPage = () => {
@@ -11,10 +16,21 @@ export const TodoPage = () => {
 
   return (
     <TodoLayout>
-      {view === "no-view" ? <NothingSelectedView /> : <AllTaks />}
-
-      {/* <AllTaks /> */}
-      {/* <CompletdTasks /> */}
+      {view === "no-view" ? (
+        <NothingSelectedView />
+      ) : view === "all" ? (
+        <AllTaks />
+      ) : view === "importan" ? (
+        <ImportantsTaks />
+      ) : view === "pending" ? (
+        <PendinTaks />
+      ) : view === "fishs" ? (
+        <FinishedTaks />
+      ) : view === "caduco" ? (
+        <ExpiredTaks />
+      ) : (
+        <DeleteTaks />
+      )}
 
       <TaksModal />
     </TodoLayout>

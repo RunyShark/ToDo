@@ -13,9 +13,17 @@ import {
   Grid,
 } from "@mui/material";
 import { useAuth, useTaks } from "../../index";
+import { FinishedTaks } from "../../toDo/view/FinishedTaks";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
-  const { startGetTask } = useTaks();
+  const {
+    startGetTask,
+    importanTakns,
+    pendigTaks,
+    deleteTaks,
+    expiredTaks,
+    finishTaks,
+  } = useTaks();
   const { user } = useAuth();
 
   const onTaks = (action: string) => {
@@ -25,19 +33,19 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
         startGetTask();
         break;
       case "Tareas importantes":
-        console.log("Hola2");
+        importanTakns();
         break;
       case "Tareas pendientes":
-        console.log("Hola3");
+        pendigTaks();
         break;
       case "Tareas finalizadas":
-        console.log("Hola4");
+        finishTaks();
         break;
       case "Tareas vencidas":
-        console.log("Hola5");
+        expiredTaks();
         break;
       case "Tareas eliminadas":
-        console.log("Hola6");
+        deleteTaks();
         break;
       default:
         console.log("nada por aqui");

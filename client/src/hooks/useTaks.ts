@@ -8,11 +8,18 @@ import {
   PutTodosRes,
 } from "./interfaces/interfaceTaks";
 import {
-  onAddNewTodo,
-  onDeleteTodo,
-  onUpdateTodo,
-  onGetTodos,
   conversDateTodo,
+  onAddNewTodo,
+  onExpiredTodo,
+  onDeleteSaveTodos,
+  onDeleteTodo,
+  onFinishSaving,
+  onFinishTodo,
+  onGetTodos,
+  onImportanTodo,
+  onLogoutUser,
+  onPedingTodo,
+  onUpdateTodo,
 } from "../index";
 export const useTaks = () => {
   const { todos, isSaving, messageSaved, isLoadingTodos, view } = useSelector<
@@ -49,6 +56,23 @@ export const useTaks = () => {
     const { data } = await todoAPI.delete(`todo/deleteTodo/${id}`);
   };
 
+  const importanTakns = () => {
+    dispatch(onImportanTodo());
+  };
+
+  const pendigTaks = () => {
+    dispatch(onPedingTodo());
+  };
+  const finishTaks = () => {
+    dispatch(onFinishTodo());
+  };
+  const expiredTaks = () => {
+    dispatch(onExpiredTodo());
+  };
+  const deleteTaks = () => {
+    dispatch(onDeleteSaveTodos());
+  };
+
   return {
     view,
     todos,
@@ -60,5 +84,10 @@ export const useTaks = () => {
     startSaveTaks,
     startUpdateTaks,
     startDeleteTaks,
+    importanTakns,
+    pendigTaks,
+    finishTaks,
+    expiredTaks,
+    deleteTaks,
   };
 };

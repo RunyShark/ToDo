@@ -1,16 +1,14 @@
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import { MyTextinput, MyChechBox, MyDate } from ".";
+import { MyTextinput, MyChechBox, MyDate } from "../";
 import { Grid, Button } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
-import { useUIModal } from "../../index";
+import { useUIModal } from "../../../index/index";
 
 export const ModalForm = () => {
   const { modalClose } = useUIModal();
-  const closeModal = () => {
-    modalClose();
-  };
+
   return (
     <div>
       <Formik
@@ -21,8 +19,6 @@ export const ModalForm = () => {
           important: false,
         }}
         onSubmit={(values) => {
-          console.log(values);
-          //recoverPassword(values);
           modalClose();
         }}
         validationSchema={yup.object({

@@ -7,8 +7,8 @@ import {
   Modal,
   Fade,
 } from "@mui/material";
-import { useUIModal } from "../../index";
-import { ModalForm } from "./ModalForm";
+import { useUIModal } from "../../../index/index";
+import { ModalForm } from "../modalForm/ModalForm";
 import { AddCircle } from "@mui/icons-material";
 
 const style = {
@@ -22,17 +22,21 @@ const style = {
   borderRadius: 5,
 };
 
-export const ModalUpdate = ({ props }: { props: string }) => {
+export const TaksModal = () => {
   const { modalState, modalClose, modalOpen } = useUIModal();
-  console.log(props);
+
   return (
     <div>
       <Button
         onClick={modalOpen}
         size="large"
         sx={{
-          ml: 3,
-          mt: 1,
+          color: "white",
+          backgroundColor: "secondary.main",
+          ":hover": { backgroundColor: "secondary.main", opacity: 0.9 },
+          position: "fixed",
+          right: 50,
+          bottom: 50,
         }}
         // disabled={isSaving}
       >

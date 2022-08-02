@@ -7,8 +7,8 @@ import {
   Modal,
   Fade,
 } from "@mui/material";
-import { useUIModal } from "../../index";
-import { ModalForm } from "./ModalForm";
+import { useUIModal } from "../../../index/index";
+import { ModalFormUpdate } from "../modalForm/ModalFormUpdate";
 import { AddCircle } from "@mui/icons-material";
 
 const style = {
@@ -22,23 +22,18 @@ const style = {
   borderRadius: 5,
 };
 
-export const TaksModal = () => {
-  const { modalState, modalClose, modalOpen } = useUIModal();
+export const ModalUpdate = ({ props }: { props: string }) => {
+  const { modalUpdate, modalClose, modalUpdateOpen } = useUIModal();
 
   return (
     <div>
       <Button
-        onClick={modalOpen}
+        onClick={modalUpdateOpen}
         size="large"
         sx={{
-          color: "white",
-          backgroundColor: "secondary.main",
-          ":hover": { backgroundColor: "secondary.main", opacity: 0.9 },
-          position: "fixed",
-          right: 50,
-          bottom: 50,
+          ml: 3,
+          mt: 1,
         }}
-        // disabled={isSaving}
       >
         <AddCircle />
         Crear
@@ -46,7 +41,7 @@ export const TaksModal = () => {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={modalState}
+        open={modalUpdate}
         onClose={() => modalClose()}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -54,13 +49,13 @@ export const TaksModal = () => {
           timeout: 500,
         }}
       >
-        <Fade in={modalState}>
+        <Fade in={modalUpdate}>
           <Box sx={style}>
             <Typography variant="h4" sx={{ mb: 3 }}>
-              Nueva tarea
+              Actualizar tarea
             </Typography>
             <Divider />
-            <ModalForm />
+            <ModalFormUpdate />
           </Box>
         </Fade>
       </Modal>

@@ -37,7 +37,7 @@ export const todoSlice = createSlice({
       state.view = "fishs";
     },
 
-    onDeciduousTodo: (state) => {
+    onExpiredTodo: (state) => {
       state.view = "caduco";
     },
 
@@ -63,4 +63,10 @@ export const {
   onUpdateTodo,
   onGetTodos,
   onFinishSaving,
+  onImportanTodo,
+  onPedingTodo,
+  onFinishTodo,
+  onExpiredTodo,
+  onDeleteSaveTodos,
+  onLogoutUser,
 } = todoSlice.actions;
