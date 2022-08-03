@@ -28,6 +28,7 @@ Construir un App utilizando las siguientes tecnologías.
 
 ### Funcionalidad
 La aplicación cuenta con un registro de usuarios, este nos permite crear una cuenta, acceder a la cuenta y también poder recuperar contraseña para no perder acceso a nuestra cuenta.
+
 Una vez ingresado a la APP podemos apreciar una vista de bienvenida que nos indica que seleccionemos una acción o creemos una nueva tarea, tenemos 6 acciones:
 
 - Todas mis tareas
