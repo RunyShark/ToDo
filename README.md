@@ -40,8 +40,8 @@ Cada una de las acciones nos ofrece una mayor comodidad a la hora de manear nues
 ### Implementación de tecnologías
 
 ##### Creación del servido y manejo de data
-Para el almacenamiento de data opté por implementar una base de dato no relacional**mongoose**. 
-Creación del API REST Express y  para las validaciones utilicé **Express-validator**, esto da mayor comodidad a la hora de trabajar con las validaciones y poder almacenar data limpia.
+Para el almacenamiento de data opté por implementar una base de dato no relacional **mongoose**. 
+Creación del API REST **Express** y  para las validaciones utilicé **Express-validator**, esto da mayor comodidad a la hora de trabajar con las validaciones y poder almacenar data limpia.
 
 
 ##### Registro de usuario
