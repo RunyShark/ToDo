@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import { AuthLayoutProps } from "../interfaces/interfacesUi";
 
-export const AuthLayout = ({ children, title }: AuthLayoutProps) => {
+export const AuthLayout = ({ children, title }: any) => {
   return (
     <Grid
       container
