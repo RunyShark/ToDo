@@ -38,7 +38,7 @@ Una vez ingresado a la APP podemos apreciar una vista de bienvenida que nos indi
 - Tareas vencidas 
 - Papelera 
 
-Cada una de las acciones nos ofrece una mayor comodidad a la hora de manear nuestras actividades, ya que esta organizan nuestras tareas por nosotros evitando la perdida de tiempo a la hora de buscar una tarea.
+Cada una de las acciones nos ofrece una mayor comodidad al momento de manejar nuestras actividades, ya que la APP organiza nuestras tareas por nosotros evitando la pérdida de tiempo al momento de buscar una tarea.
 
 ### Implementación de tecnologías
 
