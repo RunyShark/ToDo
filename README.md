@@ -3,7 +3,7 @@
 Enfocado en dar la mejor experiencia de usuario.
 
 ## Enunciado
-El siguiente proyecto fue realizado con el fin de cumplir todos los puntos del requerido de la prueba de To do App Challenge.
+El siguiente proyecto fue realizado con el fin de cumplir todos los puntos  requeridos de la prueba.
 
 ##  Objetivos del Proyecto
 Construir un App utilizando las siguientes tecnologías.
