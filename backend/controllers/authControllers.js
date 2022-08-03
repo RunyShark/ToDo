@@ -1,5 +1,12 @@
 const { request, response } = require("express");
-const { hassPassword, generateJWT, checkPassword } = require("../helpers");
+const {
+  hassPassword,
+  generateJWT,
+  checkPassword,
+  welcomeEmailRegister,
+  changuePassword,
+  changuePasswordEmail,
+} = require("../helpers");
 const Users = require("../models/User");
 
 const createAccount = async (req = request, res = response) => {
@@ -12,7 +19,7 @@ const createAccount = async (req = request, res = response) => {
 
     user.password = passOp;
     await user.save();
-
+    welcomeEmailRegister(user);
     res.status(201).json({
       Error: false,
       msg: "Registro completado",
@@ -83,8 +90,78 @@ const validateToken = async (req = request, res = response) => {
   }
 };
 
+const chaguePassword = async (req = request, res = response) => {
+  try {
+    const { email } = req.body;
+
+    const user = await Users.findOne({ email });
+
+    user.changePassword = changuePassword();
+
+    await user.save();
+    changuePasswordEmail({
+      email,
+      name: user.name,
+      changePassword: user.changePassword,
+    });
+    res.json({ msg: "Hemos enviado un email con las instrucciones" });
+  } catch (error) {
+    console.log(error.message);
+    res
+      .status(500)
+      .json({ Error: true, msg: `Algo no salio mal ${error.message}` });
+  }
+};
+const validateChanguePasswordToken = async (req = request, res = response) => {
+  try {
+    const { changePassword } = req.params;
+    console.log(changePassword);
+    const user = await Users.findOne({ changePassword });
+
+    if (user) {
+      res.json({ msg: "Token valido y el usuario existe" });
+    } else {
+      const error = new Error("Token no valido o es invalido");
+      return res.status(400).json({ msg: error.message });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res
+      .status(500)
+      .json({ Error: true, msg: `Algo no salio mal ${error.message}` });
+  }
+};
+
+const newPassword = async (req = request, res = response) => {
+  try {
+    const { toke } = req.params;
+    const { password } = req.body;
+
+    const user = await Users.findOne({ toke });
+    const passOp = await hassPassword(password);
+    console.log(user);
+    if (user) {
+      user.changePassword = null;
+      user.password = passOp;
+      await user.save();
+      return res.json({ msg: "Contraseña cambiada correctamente" });
+    } else {
+      const error = new Error("Token invalido");
+      return res.status(404).json({ msg: error.message });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res
+      .status(500)
+      .json({ Error: true, msg: `Algo no salio mal ${error.message}` });
+  }
+};
+
 module.exports = {
   createAccount,
   loginAccount,
   validateToken,
+  chaguePassword,
+  validateChanguePasswordToken,
+  newPassword,
 };

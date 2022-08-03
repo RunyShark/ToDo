@@ -1,8 +1,11 @@
 const { Router } = require("express");
 const { check } = require("express-validator");
 const {
+  chaguePassword,
   createAccount,
   loginAccount,
+  newPassword,
+  validateChanguePasswordToken,
   validateToken,
 } = require("../controllers");
 const { validateErros, validateJWT } = require("../middlewares");
@@ -57,6 +60,23 @@ route.post(
 
 route.get("/validate", [validateJWT, validateErros], validateToken);
 
+route.post(
+  "/changuePassword",
+  [
+    check("email", "El campo email es obligatoior").not().isEmpty(),
+    check("email", "Debe de ser un email valido").isEmail(),
+    check("email").custom(emailNoExists),
+    validateErros,
+  ],
+  chaguePassword
+);
+
+route.get(
+  "/changuePasswordCheck/:changePassword",
+  validateChanguePasswordToken
+);
+
+route.post("/changuePasswordCheck/:changePassword", newPassword);
 module.exports = {
   auth: route,
 };
