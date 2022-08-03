@@ -33,11 +33,21 @@ export const authSlice = createSlice({
       state.user = {};
       state.error = undefined;
     },
+    onNewPassword: (state) => {
+      state.status = "not-authenticated";
+      state.msg = "ChanguePassword";
+    },
     clearErros: (state) => {
       state.error = undefined;
     },
   },
 });
 
-export const { onChecking, onRegister, onLogin, onLogout, clearErros } =
-  authSlice.actions;
+export const {
+  onChecking,
+  onRegister,
+  onLogin,
+  onLogout,
+  clearErros,
+  onNewPassword,
+} = authSlice.actions;

@@ -1,4 +1,4 @@
-export const compareDate = async (dateNow: any) => {
+export const compareDate = (dateNow: any) => {
   console.log(dateNow);
   const meses = [
     "enero",
@@ -20,7 +20,7 @@ export const compareDate = async (dateNow: any) => {
     dateStyle: "long",
   }).format(nuevaFecha);
 
-  const dateTakss = await dateNow
+  const dateTakss = dateNow
     .map((taks: any) => {
       let time = nowDate.split(" ");
       const dateNowToday = time[4];

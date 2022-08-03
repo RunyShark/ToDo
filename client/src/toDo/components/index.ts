@@ -15,3 +15,5 @@ export * from "./viewComponents/cards/CardTaks";
 export * from "../../hooks";
 export * from "../../ui/layout";
 export * from "../view";
+export * from "./UpdatePerfil";
+export * from "./formik/MyTextInputUser";

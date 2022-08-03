@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { compareDate } from "../../../helpers/compareDate";
 
 export const todoSlice = createSlice({
   name: "todo",
@@ -77,7 +78,7 @@ export const todoSlice = createSlice({
       state.isSaving = true;
       state.isLoadingTodos = true;
       state.view = "caduco";
-      state.todoCopia = state.todos;
+      state.taksExpired = compareDate(state.todoCopia);
       state.messageSaved = "caduco";
     },
 

@@ -7,6 +7,7 @@ import {
   onLogin,
   onLogout,
   clearErros,
+  onNewPassword,
 } from "../index";
 import { AuthProps, LoginOrRegister } from "./interfaces/interfacesAuth";
 
@@ -72,9 +73,23 @@ export const useAuth = () => {
     }
   };
 
-  const recoverPassword = ({ email }: { email: string }) => {
-    //*Recuperar cuenta
-    console.log(email);
+  const recoverPassword = async ({ email }: { email: string }) => {
+    try {
+      await todoAPI.post(`/auth/changuePassword`, { email });
+      //dispatch(onNewPassword());
+      Swal.fire(
+        "Verifique",
+        "Se envio un correo con las instrucciones",
+        "success"
+      );
+    } catch (error: any) {
+      dispatch(onLogout());
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", error.response.data.msg, "error");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
 
   const logout = () => {
@@ -82,6 +97,50 @@ export const useAuth = () => {
     localStorage.removeItem("token-init-date");
     dispatch(clearErros());
     dispatch(onLogout());
+  };
+
+  const startChanguePassword = async ({
+    token,
+    password,
+  }: {
+    token: string | undefined;
+    password: string;
+  }) => {
+    try {
+      await todoAPI.post(`/auth/changuePasswordCheck/${token}`, { password });
+      dispatch(onNewPassword());
+      Swal.fire(
+        "Contraseña",
+        "contraseña actualizada, puedes loguearte",
+        "success"
+      );
+    } catch (error: any) {
+      dispatch(onLogout());
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", error.response.data.msg, "error");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
+  };
+
+  const startEditName = async ({ name }: { name: string }) => {
+    try {
+      await todoAPI.put(`/updateUser`, { name });
+      dispatch(onNewPassword());
+      Swal.fire(
+        "Actualizacion",
+        "El perfil fue editado exitosament,se reiniciara secion para ver los cambios",
+        "success"
+      );
+    } catch (error: any) {
+      dispatch(onLogout());
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", error.response.data.msg, "error");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
 
   return {
@@ -94,5 +153,7 @@ export const useAuth = () => {
     logout,
     checkAuthToken,
     recoverPassword,
+    startChanguePassword,
+    startEditName,
   };
 };

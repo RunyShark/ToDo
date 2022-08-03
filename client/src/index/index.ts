@@ -10,3 +10,5 @@ export * from "../theme/AppTheme";
 export * from "../toDo/routes/TodoRoutes";
 export * from "../ui/layout";
 export * from "../toDo/components/Perfil";
+export * from "../auth/pages/ChanguePasswordPAge";
+export * from "../auth/pages/RecuperarPassword";

@@ -174,36 +174,7 @@ export const useTaks = () => {
       Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
     }
   };
-  const expiredTaks = async () => {
-    try {
-      if (todos.length === 0) {
-        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
-          "/todo/getTodos"
-        );
-        const results = conversDateTodo(data.results);
 
-        const obj = {
-          Error: data.Error,
-          msg: data.msg,
-          results,
-        };
-
-        dispatch(onGetTodos(obj));
-        await compareDate(results);
-
-        dispatch(onExpiredTodo());
-      } else {
-        await compareDate(taksExpired);
-        dispatch(onExpiredTodo());
-      }
-    } catch (error: any) {
-      if (error.response.data.msg) {
-        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
-        return;
-      }
-      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
-    }
-  };
   const deleteTaks = async () => {
     try {
       if (todos.length === 0) {
@@ -233,6 +204,38 @@ export const useTaks = () => {
 
   const clearStater = () => {
     dispatch(onLogoutUser());
+  };
+
+  const expiredTaks = async () => {
+    try {
+      if (todos.length === 0) {
+        const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
+          "/todo/getTodos"
+        );
+        const results = conversDateTodo(data.results);
+
+        const obj = {
+          Error: data.Error,
+          msg: data.msg,
+          results,
+        };
+
+        dispatch(onGetTodos(obj));
+        const res = await compareDate(results);
+        //console.log(res);
+        dispatch(onExpiredTodo());
+      } else {
+        const res = await compareDate(taksExpired);
+        //console.log(res);
+        dispatch(onExpiredTodo());
+      }
+    } catch (error: any) {
+      if (error.response.data.msg) {
+        Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
+        return;
+      }
+      Swal.fire("Verifique", error.response.data.errors[0].msg, "error");
+    }
   };
 
   return {

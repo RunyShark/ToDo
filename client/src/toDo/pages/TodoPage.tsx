@@ -29,7 +29,7 @@ export const TodoPage = () => {
       ) : view === "fishs" ? (
         <ViewDad title="Tareas terminadas📝" children={<TaksFinished />} /> //*terminada
       ) : view === "caduco" ? (
-        <ViewDad title="Tareas expiradas⏰" children={<TaksExpired />} /> //*pendiente
+        <ViewDad title="Tareas expiradas⏰" children={<TaksExpired />} /> //*terminada
       ) : view === "delete" ? (
         <ViewDad title="Tareas eliminadas🗑" children={<TaksDeleteView />} /> //*terminada
       ) : view === "actualizar" ? (
