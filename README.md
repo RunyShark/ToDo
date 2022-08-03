@@ -5,7 +5,8 @@ Enfocado en dar la mejor experiencia de usuario.
 ## Enunciado
 El siguiente proyecto fue realizado con el fin de cumplir todos los puntos  requeridos de la prueba.
 
-link de la APP: [todoapp-mocha-alpha.vercel.app](https://todoapp-mocha-alpha.vercel.app)
+Link de la APP: [todoapp-mocha-alpha.vercel.app](https://todoapp-mocha-alpha.vercel.app)
+Link documentación API REST: https://documenter.getpostman.com/view/20592207/Uzs435d1
 
 ##  Objetivos del Proyecto
 Construir un App utilizando las siguientes tecnologías.
