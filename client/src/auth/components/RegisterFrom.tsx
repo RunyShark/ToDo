@@ -1,11 +1,13 @@
 import { Form, Formik } from "formik";
 import { Link as RouterLink } from "react-router-dom";
 import * as yup from "yup";
-import "./styles/styles.css";
-import { useAuth } from "../../index";
-import { MyTextinput } from ".";
+
 import { Grid, Button, Link } from "@mui/material";
 import { Login } from "@mui/icons-material";
+
+import "./styles/styles.css";
+
+import { useAuth, MyTextinputAuth } from "../../index";
 
 export const RegisterFrom = () => {
   const { startRegister } = useAuth();
@@ -39,14 +41,14 @@ export const RegisterFrom = () => {
       >
         {(formik) => (
           <Form>
-            <MyTextinput
+            <MyTextinputAuth
               label="Nombre"
               name="name"
               placeholder="Escribe tu nombre"
               type="text"
               fullWidth
             />
-            <MyTextinput
+            <MyTextinputAuth
               label="Correo"
               name="email"
               placeholder="Correo electrónico"
@@ -54,7 +56,7 @@ export const RegisterFrom = () => {
               fullWidth
             />
 
-            <MyTextinput
+            <MyTextinputAuth
               label="Contraseña"
               name="password"
               type="password"

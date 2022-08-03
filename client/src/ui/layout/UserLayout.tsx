@@ -1,4 +1,3 @@
-import React from "react";
 import { NavBar } from "../components/NavBar";
 import { Box, Toolbar } from "@mui/material";
 import { AuthLayoutProps } from "../interfaces/interfacesUi";

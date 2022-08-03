@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import { AddBox, StarOutline } from "@mui/icons-material";
+import { AddBox } from "@mui/icons-material";
 
 export const NothingSelectedView = () => {
   return (

@@ -1,12 +1,12 @@
 import { Form, Formik } from "formik";
 import { Link as RouterLink } from "react-router-dom";
 import * as yup from "yup";
-import "./styles/styles.css";
-import { useAuth } from "../../index";
-import { MyTextinput } from ".";
+
 import { Grid, Button, Link } from "@mui/material";
 import { Login } from "@mui/icons-material";
 
+import "./styles/styles.css";
+import { useAuth, MyTextinputAuth } from "../../index";
 export const RecuperarPasswordForm = () => {
   const { recoverPassword } = useAuth();
   return (
@@ -29,7 +29,7 @@ export const RecuperarPasswordForm = () => {
       >
         {(formik) => (
           <Form>
-            <MyTextinput
+            <MyTextinputAuth
               label="Correo"
               name="email"
               placeholder="Correo electrónico"

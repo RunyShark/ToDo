@@ -1,5 +1,4 @@
 export const compareDate = (dateNow: any) => {
-  console.log(dateNow);
   const meses = [
     "enero",
     "febrero",

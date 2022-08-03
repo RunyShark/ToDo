@@ -8,7 +8,7 @@ interface Props {
   [x: string]: any;
 }
 
-export const MyChechBox = ({ important, ...props }: Props) => {
+export const MyChechBoxMd = ({ important, ...props }: Props) => {
   const [filed] = useField({ ...props, type: "checkbox" });
 
   return (

@@ -7,9 +7,9 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
+import { DeleteOutlined, SaveOutlined, Favorite } from "@mui/icons-material";
+
 import { useTaks } from "../../../index";
-import { DeleteOutlined, SaveOutlined } from "@mui/icons-material";
-import { Favorite } from "@mui/icons-material";
 
 export const UpdateNote = () => {
   const { update, startSaveTaks, startGetTask } = useTaks();

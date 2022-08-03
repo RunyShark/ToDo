@@ -9,7 +9,7 @@ interface Props {
   [x: string]: any;
 }
 
-export const MyTextinput = ({ value, label, ...props }: Props) => {
+export const MyTextinputAuth = ({ label, ...props }: Props) => {
   const [filed] = useField(props);
 
   return (

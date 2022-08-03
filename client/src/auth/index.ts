@@ -1,4 +1,3 @@
-export * from "./pages/LoginPage";
-export * from "./pages/RecuperarPassword";
-export * from "./pages/RegisterPage";
+export * from "./components";
+export * from "./pages";
 export * from "./routes/routesLogion";

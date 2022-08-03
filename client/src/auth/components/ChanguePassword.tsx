@@ -2,10 +2,11 @@ import { Form, Formik } from "formik";
 import { Link as RouterLink, useParams, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import "./styles/styles.css";
-import { useAuth } from "../../index";
-import { MyTextinput } from ".";
+
 import { Grid, Button, Link } from "@mui/material";
 import { Login } from "@mui/icons-material";
+
+import { useAuth, MyTextinputAuth } from "../../index";
 
 export const ChanguePassword = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export const ChanguePassword = () => {
       >
         {(formik) => (
           <Form>
-            <MyTextinput
+            <MyTextinputAuth
               label="Contraseña"
               name="password"
               type="password"
@@ -49,7 +50,7 @@ export const ChanguePassword = () => {
               fullWidth
             />
 
-            <MyTextinput
+            <MyTextinputAuth
               label="Contraseña"
               name="confirmPassword"
               type="password"

@@ -1,4 +1,3 @@
-import { Person } from "@mui/icons-material";
 import { Grid, Typography } from "@mui/material";
 import { AuthLayoutProps } from "../interfaces/interfacesUi";
 

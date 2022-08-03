@@ -1,17 +1,11 @@
 import { useRef } from "react";
-import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
-
+import { Form, Formik } from "formik";
 import * as yup from "yup";
-// import "./styles/styles.css";
-import { useAuth } from "../../index";
-import { MyTextInputUser } from ".";
+
 import {
   Grid,
   Button,
-  Link,
-  IconButton,
-  TextField,
   ImageList,
   ImageListItem,
   Typography,
@@ -19,8 +13,9 @@ import {
 import {
   AddPhotoAlternateOutlined,
   AssignmentReturnOutlined,
-  Login,
 } from "@mui/icons-material";
+
+import { useAuth, MyTextInputUser } from "../../index";
 
 export const UpdatePerfil = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -43,8 +38,10 @@ export const UpdatePerfil = () => {
           name: "",
           //img: "",
         }}
-        onSubmit={(values) => {
-          startEditName(values);
+        onSubmit={async (values) => {
+          await startEditName(values);
+          localStorage.clear();
+
           //handleClick();
         }}
         validationSchema={yup.object({

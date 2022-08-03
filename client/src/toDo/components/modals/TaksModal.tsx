@@ -1,3 +1,4 @@
+import { ModalForm } from "./ModalForm";
 import {
   Button,
   Typography,
@@ -7,9 +8,10 @@ import {
   Modal,
   Fade,
 } from "@mui/material";
-import { useUIModal } from "../../../index/index";
-import { ModalForm } from "../modalForm/ModalForm";
+
 import { AddCircle } from "@mui/icons-material";
+
+import { useUIModal } from "../../../index";
 
 const style = {
   position: "absolute" as "absolute",
@@ -38,7 +40,6 @@ export const TaksModal = () => {
           right: 50,
           bottom: 50,
         }}
-        // disabled={isSaving}
       >
         <AddCircle />
         Crear

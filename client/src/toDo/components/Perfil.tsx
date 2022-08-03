@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import {
-  AddPhotoAlternateOutlined,
-  AssignmentReturnOutlined,
-} from "@mui/icons-material";
+
 import {
   Grid,
   TextField,
   ImageList,
   ImageListItem,
   IconButton,
+  Button,
 } from "@mui/material";
-
-import Button from "@mui/material/Button";
+import {
+  AddPhotoAlternateOutlined,
+  AssignmentReturnOutlined,
+} from "@mui/icons-material";
 
 export const Perfil = () => {
   const navigate = useNavigate();

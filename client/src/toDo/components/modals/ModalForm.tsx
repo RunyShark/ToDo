@@ -1,10 +1,16 @@
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import { MyTextinput, MyChechBox, MyDate } from "../";
 import { Grid, Button } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
-import { useUIModal, useTaks } from "../../../index";
+
+import {
+  useUIModal,
+  useTaks,
+  MyTextinput,
+  MyChechBox,
+  MyDate,
+} from "../../../index";
 
 export const ModalForm = () => {
   const { modalClose } = useUIModal();

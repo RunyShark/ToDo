@@ -1,5 +1,3 @@
-import { MouseEvent } from "react";
-import ListItemButton from "@mui/material/ListItemButton";
 import {
   Box,
   Divider,
@@ -11,7 +9,9 @@ import {
   Toolbar,
   Typography,
   Grid,
+  ListItemButton,
 } from "@mui/material";
+
 import { useAuth, useTaks } from "../../index";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {

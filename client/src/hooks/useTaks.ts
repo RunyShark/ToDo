@@ -1,13 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import todoAPI from "../api/todoAPI";
 import Swal from "sweetalert2";
-import {
-  CreateNewTodoRes,
-  GetTodosRes,
-  PostTodoProps,
-  PutTodoProps,
-  PutTodosRes,
-} from "./interfaces/interfaceTaks";
+import { CreateNewTodoRes, GetTodosRes } from "./interfaces/interfaceTaks";
 import {
   conversDateTodo,
   onAddNewTodo,

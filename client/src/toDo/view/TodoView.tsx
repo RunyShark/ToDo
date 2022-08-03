@@ -1,10 +1,7 @@
 import { Button, Checkbox, Grid, TextField, Typography } from "@mui/material";
-import {
-  AddBox,
-  Favorite,
-  FavoriteBorder,
-  SaveOutlined,
-} from "@mui/icons-material";
+import { SaveOutlined } from "@mui/icons-material";
+
+//*ojito
 export const TodoView = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   return (

@@ -1,4 +1,3 @@
-import { TaksViewAllTaks } from "../components/viewComponents/TaksViewAllTaks";
 import {
   TodoLayout,
   TaksModal,
@@ -11,7 +10,8 @@ import {
   TaksFinished,
   TaksImportants,
   UpdateNote,
-} from "../components";
+  TaksViewAllTaks,
+} from "../../index";
 
 export const TodoPage = () => {
   const { view } = useTaks();
