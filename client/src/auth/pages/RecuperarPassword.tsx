@@ -1,4 +1,5 @@
-import { AuthLayout, RecuperarPasswordForm } from "../../index";
+import { RecuperarPasswordForm } from "../../index";
+import { AuthLayout } from "../../ui/layout/Authlayout";
 
 export const RecuperarPassword = () => {
   return (

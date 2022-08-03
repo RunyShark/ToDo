@@ -1,4 +1,5 @@
-import { AuthLayout, RegisterFrom } from "../../index";
+import { RegisterFrom } from "../../index";
+import { AuthLayout } from "../../ui/layout/Authlayout";
 
 export const RegisterPage = () => {
   return (
