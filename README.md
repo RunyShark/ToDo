@@ -5,6 +5,8 @@ Enfocado en dar la mejor experiencia de usuario.
 ## Enunciado
 El siguiente proyecto fue realizado con el fin de cumplir todos los puntos  requeridos de la prueba.
 
+link de la APP: todoapp-mocha-alpha.vercel.app
+
 ##  Objetivos del Proyecto
 Construir un App utilizando las siguientes tecnologías.
 - NodeJS
