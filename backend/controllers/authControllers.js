@@ -93,6 +93,7 @@ const validateToken = async (req = request, res = response) => {
 const chaguePassword = async (req = request, res = response) => {
   try {
     const { email } = req.body;
+    console.log(req.body);
 
     const user = await Users.findOne({ email });
 
@@ -115,7 +116,7 @@ const chaguePassword = async (req = request, res = response) => {
 const validateChanguePasswordToken = async (req = request, res = response) => {
   try {
     const { changePassword } = req.params;
-    console.log(changePassword);
+    console.log("soy yooooo", changePassword);
     const user = await Users.findOne({ changePassword });
 
     if (user) {
@@ -135,18 +136,21 @@ const validateChanguePasswordToken = async (req = request, res = response) => {
 const newPassword = async (req = request, res = response) => {
   try {
     const { toke } = req.params;
+    const changePassword = toke;
     const { password } = req.body;
 
-    const user = await Users.findOne({ toke });
+    const user = await Users.findOne({ changePassword });
     const passOp = await hassPassword(password);
-    console.log(user);
+
     if (user) {
       user.changePassword = null;
       user.password = passOp;
       await user.save();
       return res.json({ msg: "Contraseña cambiada correctamente" });
     } else {
-      const error = new Error("Token invalido");
+      const error = new Error(
+        "Vuelve a enviar la solicitud, autentificacion caducada"
+      );
       return res.status(404).json({ msg: error.message });
     }
   } catch (error) {

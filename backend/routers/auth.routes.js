@@ -76,7 +76,7 @@ route.get(
   validateChanguePasswordToken
 );
 
-route.post("/changuePasswordCheck/:changePassword", newPassword);
+route.post("/changuePasswordCheck/:toke", newPassword);
 module.exports = {
   auth: route,
 };
