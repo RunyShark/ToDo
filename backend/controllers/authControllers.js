@@ -93,7 +93,6 @@ const validateToken = async (req = request, res = response) => {
 const chaguePassword = async (req = request, res = response) => {
   try {
     const { email } = req.body;
-    console.log(req.body);
 
     const user = await Users.findOne({ email });
 
@@ -116,7 +115,7 @@ const chaguePassword = async (req = request, res = response) => {
 const validateChanguePasswordToken = async (req = request, res = response) => {
   try {
     const { changePassword } = req.params;
-    console.log("soy yooooo", changePassword);
+
     const user = await Users.findOne({ changePassword });
 
     if (user) {

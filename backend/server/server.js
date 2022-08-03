@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 require("colors");
 const dbConnection = require("../db/base");
-const { auth, todo } = require("../routers");
+const { auth, todo, updateUser } = require("../routers");
 const { PORT_SERVER } = process.env;
 
 class Server {
@@ -13,6 +13,7 @@ class Server {
     this.path = {
       routeAuth: "/api/auth",
       routeTodo: "/api/todo",
+      routeUpdate: "/api/updateUser",
     };
 
     this.connecDB();
@@ -33,6 +34,7 @@ class Server {
   route() {
     this.app.use(this.path.routeAuth, auth);
     this.app.use(this.path.routeTodo, todo);
+    this.app.use(this.path.routeUpdate, updateUser);
   }
 
   listen() {
