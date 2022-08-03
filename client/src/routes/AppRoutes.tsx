@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useMemo } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { AuthRoutes, TodoRoutes, useAuth, useTaks } from "../index";
+import { ChekingAuth } from "../ui/components/ChekingAuth";
 
 export const AppRoutes = () => {
   const { status, checkAuthToken } = useAuth();
@@ -10,7 +11,7 @@ export const AppRoutes = () => {
   }, []);
 
   if (status === "checking") {
-    return <h3>Cargando...</h3>;
+    return <ChekingAuth />;
   }
   return (
     <Suspense fallback={<span>Loading......</span>}>
