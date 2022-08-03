@@ -62,10 +62,10 @@ Para el manejo de estado fuera de los componentes implemente **Redux-Toolkit**.
 **Rutas**
 Creacion de rutas **React Router v6.**
 
-**Consumo de API Rest **
+**Consumo de API Rest**
 Opté por implementar **axios**, ya que facilita mucho las cosas a mi punto de vista.
 
-**Manejo de formularios **
+**Manejo de formularios**
 Para manejar todo lo relacionado con formularios utilice **formik** junto con **yup** para las validaciones.
 
 #### Requerimientos de Software
