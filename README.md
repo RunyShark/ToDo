@@ -57,35 +57,28 @@ Para todo lo relacionado con la interfaz de usuario utilice **React con typescri
 
 
 ##### **Estilo**.
-
 Para dar estilo a la APP utilice **Material UI** junto con **sweetalert2** para el manejo de alertas, cabe resaltar que desde el backend se mandan distintas alertas al usuario.
 
 
 **Manejo de estado**.
-
 Para el manejo de estado fuera de los componentes implementé **Redux-Toolkit**.
 
 
 **Rutas**.
-
 Creación de rutas **React Router v6.**
 
 
 **Consumo de API Rest**.
-
 Opté por implementar **axios**, ya que facilita mucho las cosas a mi punto de vista.
 
 
 **Manejo de formularios**.
-
 Para manejar todo lo relacionado con formularios utilicé **formik** junto con **yup** para las validaciones.
 
 
 #### Requerimientos de Software
 Instalación de todos los paquetes necesario npm i.
-
 Para correr backend como fronted   npm run dev.
-
 Para poder utilizar todas la herramientas de la plataforma, se debe contar con un computador con acceso a Internet y un navegador Web (por ejemplo, Chrome , Opera, Safari o Firefox ).
 
 
