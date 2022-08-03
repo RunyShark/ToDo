@@ -13,7 +13,6 @@ import {
   onAddNewTodo,
   onExpiredTodo,
   onDeleteSaveTodos,
-  onDeleteTodo,
   onFinishSaving,
   onFinishTodo,
   onGetTodos,
@@ -21,6 +20,7 @@ import {
   onLogoutUser,
   onPedingTodo,
   onUpdateTodo,
+  onSaving,
   compareDate,
 } from "../index";
 export const useTaks = () => {
@@ -38,17 +38,20 @@ export const useTaks = () => {
 
   const startUpdate = async (datos: any) => {
     dispatch(onUpdateTodo(datos));
+    dispatch(onFinishSaving());
   };
 
   const startSaveTaks = async (todo: any) => {
     try {
       if (todo._id) {
+        dispatch(onSaving());
         await todoAPI.put<CreateNewTodoRes>(
           `/todo/updateTodo/${todo._id}`,
           todo
         );
 
         Swal.fire("Actualización", "Se actualizo correctamente", "success");
+        dispatch(onFinishSaving());
       } else {
         const { data }: { data: CreateNewTodoRes } =
           await todoAPI.post<CreateNewTodoRes>("/todo/createTodo", todo);
@@ -67,7 +70,6 @@ export const useTaks = () => {
   };
 
   const startGetTask = async () => {
-    console.log("dede get");
     try {
       const { data }: { data: GetTodosRes } = await todoAPI.get<GetTodosRes>(
         "/todo/getTodos"
@@ -82,6 +84,7 @@ export const useTaks = () => {
       };
 
       dispatch(onGetTodos(obj));
+      dispatch(onFinishSaving());
     } catch (error: any) {
       if (error.response.data.msg) {
         Swal.fire("Verifique", "No tienes ninguna tarea pendiete", "info");
@@ -91,9 +94,9 @@ export const useTaks = () => {
     }
   };
 
-  const startDeleteTaks = async (id: string) => {
-    const { data } = await todoAPI.delete(`todo/deleteTodo/${id}`);
-  };
+  // const startDeleteTaks = async (id: string) => {
+  //   const { data } = await todoAPI.delete(`todo/deleteTodo/${id}`);
+  // };
 
   const importanTakns = async () => {
     try {
@@ -110,8 +113,10 @@ export const useTaks = () => {
         };
         dispatch(onGetTodos(obj));
         dispatch(onImportanTodo());
+        dispatch(onFinishSaving());
       } else {
         dispatch(onImportanTodo());
+        dispatch(onFinishSaving());
       }
     } catch (error: any) {
       if (error.response.data.msg) {
@@ -137,8 +142,10 @@ export const useTaks = () => {
         };
         dispatch(onGetTodos(obj));
         dispatch(onPedingTodo());
+        dispatch(onFinishSaving());
       } else {
         dispatch(onPedingTodo());
+        dispatch(onFinishSaving());
       }
     } catch (error: any) {
       if (error.response.data.msg) {
@@ -163,8 +170,10 @@ export const useTaks = () => {
         };
         dispatch(onGetTodos(obj));
         dispatch(onFinishTodo());
+        dispatch(onFinishSaving());
       } else {
         dispatch(onFinishTodo());
+        dispatch(onFinishSaving());
       }
     } catch (error: any) {
       if (error.response.data.msg) {
@@ -190,8 +199,10 @@ export const useTaks = () => {
         };
         dispatch(onGetTodos(obj));
         dispatch(onDeleteSaveTodos());
+        dispatch(onFinishSaving());
       } else {
         dispatch(onDeleteSaveTodos());
+        dispatch(onFinishSaving());
       }
     } catch (error: any) {
       if (error.response.data.msg) {
@@ -224,10 +235,12 @@ export const useTaks = () => {
         const res = await compareDate(results);
         //console.log(res);
         dispatch(onExpiredTodo());
+        dispatch(onFinishSaving());
       } else {
         const res = await compareDate(taksExpired);
         //console.log(res);
         dispatch(onExpiredTodo());
+        dispatch(onFinishSaving());
       }
     } catch (error: any) {
       if (error.response.data.msg) {
@@ -251,7 +264,7 @@ export const useTaks = () => {
     startGetTask,
     startSaveTaks,
     startUpdate,
-    startDeleteTaks,
+    //startDeleteTaks,
     importanTakns,
     pendigTaks,
     finishTaks,

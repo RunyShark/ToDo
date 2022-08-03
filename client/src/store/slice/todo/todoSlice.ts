@@ -21,7 +21,8 @@ export const todoSlice = createSlice({
       state.isLoadingTodos = true;
       state.view = "all";
     },
-    onDeleteTodo: (state, { payload }) => {},
+
+    // onDeleteTodo: (state, { payload }) => {},
 
     onUpdateTodo: (state, { payload }) => {
       state.update = payload;
@@ -78,7 +79,7 @@ export const todoSlice = createSlice({
       state.isSaving = true;
       state.isLoadingTodos = true;
       state.view = "caduco";
-      state.taksExpired = compareDate(state.todoCopia);
+      state.taksExpired = compareDate(state.taksExpired);
       state.messageSaved = "caduco";
     },
 
@@ -98,6 +99,10 @@ export const todoSlice = createSlice({
       state.isSaving = false;
       state.isLoadingTodos = false;
     },
+    onSaving: (state) => {
+      state.isSaving = true;
+      state.isLoadingTodos = true;
+    },
 
     onLogoutUser: (state) => {
       state.error = null;
@@ -116,7 +121,7 @@ export const todoSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   onAddNewTodo,
-  onDeleteTodo,
+  // onDeleteTodo,
   onUpdateTodo,
   onGetTodos,
   onFinishSaving,
@@ -126,4 +131,5 @@ export const {
   onExpiredTodo,
   onDeleteSaveTodos,
   onLogoutUser,
+  onSaving,
 } = todoSlice.actions;
