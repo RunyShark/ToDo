@@ -5,6 +5,8 @@ Enfocado en dar la mejor experiencia de usuario.
 ## Enunciado
 El siguiente proyecto fue realizado con el fin de cumplir todos los puntos  requeridos de la prueba.
 
+La primera carga del app tarda porque se deployo con heroku no prémium.
+
 Link de la APP: [todoapp-mocha-alpha.vercel.app](https://todoapp-mocha-alpha.vercel.app)
 
 
