@@ -76,7 +76,19 @@ route.get(
   validateChanguePasswordToken
 );
 
-route.post("/changuePasswordCheck/:toke", newPassword);
+route.post(
+  "/changuePasswordCheck/:toke",
+  [
+    check("password", "La contraseña es un campo obligatorio").not().isEmpty(),
+    check(
+      "password",
+      "La contraseña debe de tener un minimo de 6 caracteres y un maximo de 20 caracteres"
+    ).isLength({ min: 6, max: 20 }),
+
+    validateErros,
+  ],
+  newPassword
+);
 module.exports = {
   auth: route,
 };
