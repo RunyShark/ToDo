@@ -45,7 +45,7 @@ Creación del API REST **Express** y  para las validaciones utilicé **Express-v
 
 
 ##### Registro de usuario
-Para mayor seguridad del usuario utilicé **bcryptjs** para encriptar las contraseñas antes de guardar el nuevo usuario, cuando un usuario se registra por primera vez, se manda un correo de bienvenida a la APP, para el envío de correos consumí el API de **Google OAuth2.0**, junto con **nodemailer**, también para la validación de sesión implemente **jsonwebtoken**, esto último se utiliza también para guardar las tareas con el respectivo usuario, cada usuario tiene sus propias tareas, que solo él puede ver, editar, eliminar y crear en su cuenta.
+Para mayor seguridad del usuario utilicé **bcryptjs** para encriptar las contraseñas antes de guardar el nuevo usuario, cuando un usuario se registra por primera vez, se manda un correo de bienvenida a la APP, para el envío de correos consumí el API de **Google OAuth2.0**, junto con **nodemailer**, también para la validación de sesión implemente **jsonwebtoken**, esto último se utiliza para guardar las tareas con el respectivo usuario, cada usuario tiene sus propias tareas, que solo él puede ver, editar, eliminar y crear en su cuenta.
 
 
 ##### Creación de interfaz de usuario 
