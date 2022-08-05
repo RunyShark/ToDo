@@ -87,7 +87,11 @@ Para manejar todo lo relacionado con formularios utilicé **formik** junto con *
 
 
 #### Requerimientos de Software
-Instalación de todos los paquetes necesario npm i.
+
+```
+npm install
+```
+
 Para correr backend como fronted   npm run dev.
 Para poder utilizar todas la herramientas de la plataforma, se debe contar con un computador con acceso a Internet y un navegador Web (por ejemplo, Chrome , Opera, Safari o Firefox ).
 
